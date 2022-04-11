@@ -111,7 +111,7 @@ function startCLI(locale = "de_DE"){
 
                 // Deactivates skill, removes all configurations and deletes local files
                 skillManager.deactivateSkill(skillDelete, locale).then(() => {
-                    skillManager.deleteLocalSkillFiles(skillDelete).then(() => {
+                    skillManager.deleteLocalSkillFiles(skillDelete, locale).then(() => {
                         skillManager.loadSkills(locale);
                         console.log(`Successfully deleted skill '${skillDelete} ${tagDelete}'!`);
                         skillManager.loadSkills(locale);

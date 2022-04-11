@@ -1,4 +1,14 @@
 {
+  "dependencies": [
+    "@fwehn/custom_sdk",
+    "adm-zip",
+    "axios",
+    "body-parser",
+    "express",
+    "express-easy-zip",
+    "express-fileupload",
+    "jade"
+  ],
   "de_DE": {
     "launch": [ "_", "öffne", "benutze", "starte", "frag", "sag", "spiel" ]
   },

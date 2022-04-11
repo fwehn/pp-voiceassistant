@@ -4,6 +4,7 @@ const fs = require("fs");
 const customSdk = require("@fwehn/custom_sdk");
 const rhasspy = require("./rhasspy.js");
 const path = require("path")
+const {exec} = require("child_process");
 
 // Currently loaded Skills
 let skills = {};
@@ -11,15 +12,16 @@ let skills = {};
 function getSkills(){
     return skills;
 }
+
 // File-Loader for newly downloaded Skills
 function loadSkills(locale = "de_DE"){
     // Deletes old files from the require.cache
     Object.keys(require.cache).filter(entry => {
-            let relative = path.relative(`${__dirname}/skills/`, entry);
-            return relative && !relative.startsWith('..') && !path.isAbsolute(relative);
-        }).forEach(skillModule => {
-            delete require.cache[require.resolve(skillModule)]
-        });
+        let relative = path.relative(`${__dirname}/skills/`, entry);
+        return relative && !relative.startsWith('..') && !path.isAbsolute(relative);
+    }).forEach(skillModule => {
+        delete require.cache[require.resolve(skillModule)];
+    });
 
     skills = {};
     // (Re)Loads all configVariables and the source files from activated skills
@@ -41,7 +43,11 @@ function downloadSkill(name = "HelloWorld", tag = "latest") {
             let zip = new admZip(res.data);
             zip.extractAllTo(`${__dirname}/skills/${name}`,true);
 
-            resolve(zip.getEntries()[0].entryName.split("/")[0]);
+            installDependencies(name, tag).then(() => {
+                console.log(msg)
+                resolve(zip.getEntries()[0].entryName.split("/")[0]);
+            }).catch(reject);
+
         }).catch(reject);
     })
 }
@@ -53,26 +59,97 @@ function uploadSkill(name, tag, data){
             let zip = new admZip(data);
             zip.extractAllTo(`${__dirname}/skills/${name}/${tag}`, true);
 
-            resolve(zip.getEntries()[0].entryName.split("/")[0]);
+            installDependencies(name, tag).then(() => {
+                resolve(zip.getEntries()[0].entryName.split("/")[0]);
+            }).catch(reject);
         }catch (e) {
             reject(e);
         }
     })
 }
 
-// Deletes the Local Skill-Files
-function deleteLocalSkillFiles(name = "HelloWorld"){
-    return new Promise((resolve, reject) => {
-        let installed = getInstalledSkills();
-        if (!installed.includes(name)) reject('Skill not found!');
-        let configsFile = getSkillConfigs();
-        if (configsFile.hasOwnProperty(name)){
-            delete configsFile[name];
-        }
-        writeSkillConfigs(configsFile);
 
-        fs.rmSync(`${__dirname}/skills/${name}`, { recursive: true, force: true });
-        resolve('Skill deleted!');
+// Deletes unused packages
+function deleteDependencies(locale, skill){
+    return new Promise((resolve, reject) => {
+        let installed = getInstalledSkills(locale);
+        installed = installed.filter(skillIndex => skillIndex !== skill);
+
+        let usedDependencies = [];
+        for (let i in installed) {
+            let skillDependencies = Object.keys(getManifest(installed[i])["dependencies"]);
+            usedDependencies = [...usedDependencies, ...skillDependencies];
+        }
+
+        let defaultDependencies = getDefaults()["dependencies"];
+        usedDependencies = [...usedDependencies, ...defaultDependencies];
+
+        let unusedDependencies = Object.keys(getManifest(skill)["dependencies"]);
+        unusedDependencies = unusedDependencies.filter(dependency => !usedDependencies.includes(dependency));
+
+        if (unusedDependencies.length === 0) resolve("No packages to delete");
+
+        let depString = "";
+        for (let pkg in unusedDependencies){
+            depString = `${depString} ${unusedDependencies[pkg]}`;
+        }
+
+        exec(`npm uninstall ${depString}`, (error, stdout, stderr) => {
+            if (error) {
+                reject(`error: ${error.message}`);
+            }
+            if (stderr) {
+                reject(`stderr: ${stderr}`);
+            }
+            resolve(stdout);
+        });
+    });
+}
+
+// Installs required packages
+function installDependencies(skill, version){
+    return new Promise((resolve, reject) => {
+        let defaultDependencies = getDefaults()["dependencies"];
+        let dependencies = getManifest(skill, version)["dependencies"];
+
+        let depString = "";
+        for (let pkg in dependencies){
+            if (defaultDependencies.includes(pkg)) continue;
+
+            depString = `${depString} ${pkg}@${dependencies[pkg]}`;
+        }
+
+        if (!depString) resolve("No packages to install");
+
+        exec(`npm install ${depString}`, (error, stdout, stderr) => {
+            if (error) {
+                reject(`error: ${error.message}`);
+            }
+            if (stderr) {
+                reject(`stderr: ${stderr}`);
+            }
+            resolve(stdout);
+        });
+    });
+}
+
+// Deletes the Local Skill-Files
+function deleteLocalSkillFiles(name = "HelloWorld", locale = "de_DE"){
+    return new Promise((resolve, reject) => {
+        deleteDependencies(locale, name).then(() => {
+
+            let installed = getInstalledSkills(locale);
+            if (!installed.includes(name)) reject('Skill not found!');
+            let configsFile = getSkillConfigs();
+            if (configsFile.hasOwnProperty(name)){
+                delete configsFile[name];
+            }
+            writeSkillConfigs(configsFile);
+
+            fs.rmSync(`${__dirname}/skills/${name}`, { recursive: true, force: true });
+
+            resolve('Skill deleted!');
+        }).catch(reject);
     })
 }
 
@@ -340,8 +417,8 @@ function deactivateSkill(skill, locale = "de_DE"){
 }
 
 // returns manifest.json of a specific skill
-function getManifest(skill){
-    let version = getVersion(skill);
+function getManifest(skill, version){
+    if (!version) version = getVersion(skill)
     return JSON.parse(fs.readFileSync(`${__dirname}/skills/${skill}/${version}/manifest.json`).toString());
 }
 
@@ -445,5 +522,5 @@ function customIntentHandler(topic, message){
 }
 
 module.exports = {
-    skills, loadSkills, downloadSkill, uploadSkill, deleteLocalSkillFiles, getRemoteSkills, getInstalledSkills, getSkillsOverview, getSkillDetails, saveConfig, setActivateFlag, activateSkill, deactivateSkill, setVersion, getUpdates, customIntentHandler
+    skills, loadSkills, downloadSkill, uploadSkill, deleteLocalSkillFiles, getRemoteSkills, getSkillsOverview, getSkillDetails, saveConfig, setActivateFlag, activateSkill, deactivateSkill, setVersion, getUpdates, customIntentHandler
 }

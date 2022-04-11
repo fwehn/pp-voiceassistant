@@ -64,7 +64,7 @@ app.get("/download/:skillName/:versionTag", (req, res) => {
 // Simple Endpoint, which is used to deactivate a skill and delete the skill files
 app.get("/delete/:skillName", (req, res) => {
     skillManager.deactivateSkill(req.params.skillName, locale).then(() => {
-            skillManager.deleteLocalSkillFiles(req.params.skillName).then(msg => {
+            skillManager.deleteLocalSkillFiles(req.params.skillName, locale).then(msg => {
                 skillManager.loadSkills(locale);
                 res.json({
                     skill: req.params.skillName,
