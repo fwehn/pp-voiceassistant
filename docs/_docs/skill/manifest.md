@@ -55,8 +55,10 @@ Dieser Tag sollte mit dem Verzeichnis der jeweiligen Version übereinstimmen.
 
 ## Abhängigkeiten
 Unter ``dependencies`` stehen alle vom Skill benötigten Abhängigkeiten.   
-Dabei handelt es sich bei diesen Abhängigkeiten um [npm-Dependencies](https://docs.npmjs.com/cli/v8/configuring-npm/package-json#dependencies).   
-Zurzeit müssen diese noch manuell installiert werden, das soll jedoch in Zukunft automatisch passieren.
+Dabei handelt es sich bei diesen Abhängigkeiten um [npm-Dependencies](https://docs.npmjs.com/cli/v8/configuring-npm/package-json#dependencies).  
+Beim Herunterladen eines Skills, werden dann alle angegebenen Pakete automatisch installiert, sodass der Skill reibungslos funktioniert.  
+Einige dieser Pakete werden jedoch vom Skillmanager benötigt und können daher zwar genutzt, jedoch nicht überschrieben werden.  
+Welche das sind, kann man in der [``package.json``](https://github.com/fwehn/pp-voiceassistant/blob/main/src/client/package.json) nachschauen.
 
 ## Optionen
 Damit man den eigenen Skill auf die Bedürfnisse der jeweiligen Nutzerinnen und Nutzer anpassen kann, gibt es die Optionen.  

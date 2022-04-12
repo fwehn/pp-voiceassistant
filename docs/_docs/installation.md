@@ -49,12 +49,18 @@ Für den Server gibt es lediglich eine Umgebungsvariable.
 ``PORT``: Port auf den der Express-Server "hört" (default: ``3000``)
 
 
-## Installation der Dependencies
+[//]: # (## Installation der Dependencies)
 
-Einige Skills verwenden bestimmte [npm-Dependencies](https://docs.npmjs.com/cli/v8/configuring-npm/package-json#dependencies).  
-Diese werden in den jeweiligen [Manifest-Dateien](./skill/manifest.md#abhngigkeiten) unter dem Punkt ``dependencies`` aufgeführt.  
-Diese npm-Dependencies müssen manuell installiert werden.  
-Dazu verwendet man den Befehl:  
-``npm install <Name und Version der Dependency>``
+[//]: # ()
+[//]: # (Einige Skills verwenden bestimmte [npm-Dependencies]&#40;https://docs.npmjs.com/cli/v8/configuring-npm/package-json#dependencies&#41;.  )
 
-Dieser sollte im Verzeichnis des Skillmanagers ausgeführt werden, also im Verzeichnis, in dem sich die ``package.json`` befindet.
+[//]: # (Diese werden in den jeweiligen [Manifest-Dateien]&#40;./skill/manifest.md#abhngigkeiten&#41; unter dem Punkt ``dependencies`` aufgeführt.  )
+
+[//]: # (Diese npm-Dependencies müssen manuell installiert werden.  )
+
+[//]: # (Dazu verwendet man den Befehl:  )
+
+[//]: # (``npm install <Name und Version der Dependency>``)
+
+[//]: # ()
+[//]: # (Dieser sollte im Verzeichnis des Skillmanagers ausgeführt werden, also im Verzeichnis, in dem sich die ``package.json`` befindet.)

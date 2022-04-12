@@ -3,7 +3,7 @@ title: Webinterface
 permalink: /docs/client/webinterface/
 ---
 
-Um es dem Endnutzer zu erleichtern neue Skills zu installieren und zu verwalten, habe ich zusätzlich zum [CLI](./cli.md) ein Webinterface erstellt.  
+Um es den Endnutzerinnen und Endnutzern zu erleichtern, neue Skills zu installieren und zu verwalten, habe ich zusätzlich zum [CLI](./cli.md) ein Webinterface erstellt.  
 Dieses Interface nutzt sämtliche Funktionen, die vom [Skillmanager](./skillmanager.md) bereitgestellt werden, um Informationen anzuzeigen und die Skills zu verwalten.
 
 ## Übersicht
@@ -72,7 +72,7 @@ Hier werden die Funktionen genutzt, die ich [hier](./skillmanager.md#online) nä
 
 ## Upload
 Auf dieser Seite kann man einen lokal gespeicherten Skill installieren und benutzen, ohne eine aktive Verbindung zum [Skillserver](./../server/skillserver.md) zu haben.  
-Dazu gibt man einen Namen, eine Versionsbezeichnung und die jeweilige Skilldatei im Zip-Format an und klickt auf "Hochladen".  
+Dazu gibt man einen Namen, eine Versionsbezeichnung und die jeweilige Skill-Datei im Zip-Format an und klickt auf "Hochladen".  
 Der [Skillmanager](./skillmanager.md#offline) kümmert sich im Hintergrund dann darum, dass die Zip entpackt wird und alle Dateien am richtigen Ort platziert werden.  
 Nach dem Upload sollte der Skill dann auf der [Übersichtsseite](#bersicht) sichtbar und auswählbar sein.  
 
