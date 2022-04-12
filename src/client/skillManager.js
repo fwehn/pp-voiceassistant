@@ -34,7 +34,7 @@ function loadSkills(locale = "de_DE"){
     skills = skillsLocal;
 }
 
-// Downloads the latest version of a Skill as zip and unzips it
+// Downloads the latest version of a Skill as zip, unzips it and installs the required dependencies
 function downloadSkill(name = "HelloWorld", tag = "latest") {
     return new Promise((resolve, reject) => {
         axios.get(`http://${process.env.SERVER || "localhost:3000"}/download/${name}/${tag}`, {
@@ -44,15 +44,17 @@ function downloadSkill(name = "HelloWorld", tag = "latest") {
             zip.extractAllTo(`${__dirname}/skills/${name}`,true);
 
             installDependencies(name, tag).then(() => {
-                console.log(msg)
                 resolve(zip.getEntries()[0].entryName.split("/")[0]);
-            }).catch(reject);
-
+            }).catch(err => {
+                // removes downloaded files to prevent errors
+                fs.rmSync(`${__dirname}/skills/${name}`, { recursive: true, force: true });
+                reject(err);
+            });
         }).catch(reject);
     })
 }
 
-// Function used by the webinterface to save Uploaded skill files to the skill directory
+// Function used by the webinterface to save Uploaded skill files to the skill directory and installs the required dependencies
 function uploadSkill(name, tag, data){
     return new Promise((resolve, reject) => {
         try{
@@ -61,7 +63,11 @@ function uploadSkill(name, tag, data){
 
             installDependencies(name, tag).then(() => {
                 resolve(zip.getEntries()[0].entryName.split("/")[0]);
-            }).catch(reject);
+            }).catch(err => {
+                // removes uploaded files to prevent errors
+                fs.rmSync(`${__dirname}/skills/${name}`, { recursive: true, force: true });
+                reject(err);
+            });
         }catch (e) {
             reject(e);
         }
