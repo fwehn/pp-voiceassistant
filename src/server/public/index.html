@@ -6,9 +6,21 @@
 </head>
 <body>
     <form action="/upload" method="post" encType="multipart/form-data">
-        <input name="skillName" type="text" required/>
-        <input name="versionTag" type="text" required/>
-        <input name="zipped" type="file" accept=".zip" required/>
+        <label>
+            Name:
+            <input name="skillName" type="text" required/>
+        </label>
+        <br>
+        <label>
+            Version:
+            <input name="versionTag" type="text" required/>
+        </label>
+        <br>
+        <label>
+            File:
+            <input name="zipped" type="file" accept=".zip" required/>
+        </label>
+        <br>
         <input type="submit" value="Upload!"/>
     </form>
 </body>

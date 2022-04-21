@@ -9,6 +9,8 @@ const fs = require("fs");
 
 const port = process.env.PORT || 3000;
 
+
+// defining middleware
 app.use(fileUpload({
     createParentPath: true
 }));
@@ -97,23 +99,24 @@ app.get('/download/:skillName/:versionTag', async (req, res) => {
         }],filename: `${req.params.skillName}.zip`});
 });
 
+// Endpoint for upload-page
 app.post('/upload', (req, res) => {
     try{
-        if (!req.body.skillName){
+        if (!req.body.skillName){   // Name for the skill is required
             res.send({
                 status: false,
                 message: 'Enter SkillName'
             });
             return;
         }
-        if (!req.body.versionTag){
+        if (!req.body.versionTag){  // Version Tag for the Skill is required
             res.send({
                 status: false,
                 message: 'Enter Version Tag'
             });
             return;
         }
-        if (!req.files || Object.keys(req.files).length === 0){
+        if (!req.files || Object.keys(req.files).length === 0){ // Files need to be uploaded
             res.send({
                 status: false,
                 message: 'No file uploaded'
