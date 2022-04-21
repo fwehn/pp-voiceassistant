@@ -444,11 +444,13 @@ function writeSkillConfigs(data){
     fs.writeFileSync(`${__dirname}/skillConfigs.json`, JSON.stringify(data));
 }
 
+// getter for the version
 function getVersion(skill){
     let configs = getSkillConfigs();
     return configs[skill]["version"];
 }
 
+// setter for the version
 function setVersion(skill, version){
     let configs = getSkillConfigs();
     configs[skill]["version"] = version;
@@ -503,7 +505,7 @@ function getFunctionBYIntentName(intentName, slots, locale = "de_DE"){
 // Custom Intent Handler to call functions based on Intent and Slots
 function customIntentHandler(topic, message){
     let slots = {};
-    let formatted = JSON.parse(message.toString())
+    let formatted = JSON.parse(message.toString());
 
     if (formatted["intent"]["intentName"].startsWith("_")) {
         console.log(`Ignored Intent: ${formatted["intent"]["intentName"]}`);

@@ -12,6 +12,8 @@ let locale;
 app.set('views', `${__dirname}/webinterface/views`);
 app.set('view engine', 'jade');
 
+
+// defining middleware
 app.use(fileUpload({
     createParentPath: true
 }));
