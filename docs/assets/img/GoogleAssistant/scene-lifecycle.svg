@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="759px" height="326px" viewBox="0 0 759 326" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>Group 8</title>
+    <desc>Created with Sketch.</desc>
+    <g id="scene-lifecycle" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-8">
+            <g id="Group-7">
+                <rect id="Rectangle" fill="#4485F2" x="127" y="0" width="135" height="39" rx="8"></rect>
+                <g id="Group-5" transform="translate(128.000000, 57.000000)">
+                    <g id="lifecycle-stage4" fill="#4485F2">
+                        <rect id="Rectangle" x="0" y="0" width="135" height="40" rx="8"></rect>
+                    </g>
+                    <text id="Conditions" font-family="GoogleSans-Regular, Google Sans" font-size="10" font-weight="normal" fill="#FFFFFF">
+                        <tspan x="42.51" y="24">Conditions</tspan>
+                    </text>
+                </g>
+                <g id="Group-4" transform="translate(128.000000, 114.000000)">
+                    <g id="lifecycle-stage3" fill="#4485F2">
+                        <rect id="Rectangle" x="0" y="0" width="135" height="40" rx="8"></rect>
+                    </g>
+                    <text id="Slot-filling" font-family="GoogleSans-Regular, Google Sans" font-size="10" font-weight="normal" fill="#FFFFFF">
+                        <tspan x="45.39" y="24">Slot filling</tspan>
+                    </text>
+                </g>
+                <g id="lifecycle-stage2" transform="translate(128.000000, 172.000000)" fill="#4485F2">
+                    <rect id="Rectangle" x="0" y="0" width="135" height="40" rx="8"></rect>
+                </g>
+                <g id="Group-3" transform="translate(175.000000, 185.000000)" fill="#FFFFFF" font-family="GoogleSans-Regular, Google Sans" font-size="10" font-weight="normal">
+                    <text id="Prompts">
+                        <tspan x="0.95" y="10">Prompts</tspan>
+                    </text>
+                </g>
+                <text id="On-enter" font-family="GoogleSans-Regular, Google Sans" font-size="10" font-weight="normal" fill="#FFFFFF">
+                    <tspan x="175.035" y="24">On enter</tspan>
+                </text>
+                <g id="Group-2" transform="translate(344.000000, 286.000000)">
+                    <g id="lifecycle-stage2" fill="#FA7B17">
+                        <rect id="Rectangle" x="0" y="0" width="74" height="40" rx="8"></rect>
+                    </g>
+                    <text id="No-match-handler" font-family="GoogleSans-Regular, Google Sans" font-size="10" font-weight="normal" fill="#FFFFFF">
+                        <tspan x="15.14" y="17">No match </tspan>
+                        <tspan x="20.015" y="30">handler</tspan>
+                    </text>
+                </g>
+                <g id="Group-2" transform="translate(489.000000, 171.000000)">
+                    <g id="lifecycle-stage2" fill="#FA7B17">
+                        <rect id="Rectangle" x="0" y="0" width="74" height="40" rx="8"></rect>
+                    </g>
+                    <text id="Intent-handler" font-family="GoogleSans-Regular, Google Sans" font-size="10" font-weight="normal" fill="#FFFFFF">
+                        <tspan x="23.55" y="16">Intent </tspan>
+                        <tspan x="19.515" y="29">handler</tspan>
+                    </text>
+                </g>
+                <path id="Line-2" d="M80.0601765,70.0693149 C83.586167,70.0997508 86.4807347,72.7320216 86.9371044,76.127889 L128.007899,76.4834164 L129.007861,76.4920479 L128.990598,78.4919734 L127.990636,78.4833419 L86.9199759,78.128834 C86.4054801,81.5168095 83.4656726,84.0992322 79.939335,84.0687934 C76.0734857,84.0354239 72.966647,80.8744826 73.0000165,77.0086334 C73.0333859,73.1427842 76.1943272,70.0359455 80.0601765,70.0693149 Z M80.0429134,72.0692404 C77.2815925,72.0454051 75.0237773,74.2645756 74.999942,77.0258965 C74.9761066,79.7872174 77.1952772,82.0450326 79.956598,82.0688679 C82.6333679,82.0919734 84.8369945,80.0073307 84.9911461,77.3642912 L84.9958672,76.8692089 C84.8920101,74.219632 82.7227804,72.0923727 80.0429134,72.0692404 Z" fill="#737373" fill-rule="nonzero"></path>
+                <path id="Line-2" d="M326.039043,184.922452 L340,192 L325.961388,198.922237 L325.994,192.921 L262.994453,192.572873 L261.994469,192.567326 L262.005562,190.567357 L263.005547,190.572903 L326.006,190.921 L326.039043,184.922452 Z" fill="#737373" fill-rule="nonzero"></path>
+                <path id="Line-2" d="M196,39 L196,42.999 L202,43 L195,57 L188,43 L194,42.999 L194,39 L196,39 Z" fill="#737373" fill-rule="nonzero"></path>
+                <path id="Line-2" d="M196,154.035807 L196,158.035 L202,158.035807 L195,172.035807 L188,158.035807 L194,158.035 L194,154.035807 L196,154.035807 Z" fill="#737373" fill-rule="nonzero"></path>
+                <path id="Line-2" d="M196,97.0358069 L196,101.035 L202,101.035807 L195,115.035807 L188,101.035807 L194,101.035 L194,97.0358069 L196,97.0358069 Z" fill="#737373" fill-rule="nonzero"></path>
+                <path id="Line-2" d="M475,185 L489,192 L475,199 L475,192.999 L420,193 L420,191 L475,190.999 L475,185 Z" fill="#737373" fill-rule="nonzero"></path>
+                <line x1="627" y1="191" x2="563.500366" y2="190.896419" id="Line-2" stroke="#737373" stroke-width="2" stroke-linecap="square"></line>
+                <path id="Line-2" d="M277,70 L277,76 L382,76 L382,78 L277,78 L277,84 L263,77 L277,70 Z" fill="#737373" fill-rule="nonzero"></path>
+                <line x1="381" y1="77" x2="673" y2="77" id="Line-2" stroke="#737373" stroke-width="2" stroke-linecap="square"></line>
+                <line x1="418.499908" y1="307.219949" x2="591" y2="307" id="Line-2" stroke="#737373" stroke-width="2" stroke-linecap="square"></line>
+                <path id="Line-2" d="M380.980843,231.981204 L380.99982,232.981023 L381.733,271.662 L387.732915,271.548714 L380.999847,285.679029 L373.735436,271.814386 L379.733,271.7 L379.00018,233.018977 L378.981204,232.019157 L380.980843,231.981204 Z" fill="#737373" fill-rule="nonzero"></path>
+                <line x1="380.875214" y1="77.2068411" x2="381" y2="149" id="Line-2" stroke="#737373" stroke-width="2" stroke-linecap="square"></line>
+                <line x1="672.875214" y1="77.2068411" x2="673.125275" y2="134.516942" id="Line-2" stroke="#737373" stroke-width="2" stroke-linecap="square"></line>
+                <path id="Line-2" d="M674.870841,224.202487 L674.875204,225.202478 L675.096042,275.583674 C678.489931,276.054534 681.109823,278.960311 681.125208,282.486399 C681.142077,286.352356 678.021774,289.500007 674.155818,289.516876 C670.289861,289.533744 667.14221,286.413441 667.125341,282.547485 C667.109955,279.02105 669.704902,276.092292 673.095043,275.592261 L672.875223,225.211204 L672.87086,224.211214 L674.870841,224.202487 Z M674.281548,277.519325 L673.934,277.521 L673.886591,277.522556 C671.226308,277.647727 669.113591,279.850029 669.125322,282.538758 C669.137371,285.300156 671.385694,287.528943 674.147091,287.516895 C676.908489,287.504846 679.137276,285.256523 679.125227,282.495126 C679.113439,279.793337 676.96088,277.601411 674.281548,277.519325 Z" fill="#737373" fill-rule="nonzero"></path>
+                <g id="Group" transform="translate(340.000000, 151.000000)">
+                    <rect id="Rectangle" fill="#4485F2" x="0" y="0" width="80" height="80" rx="8"></rect>
+                    <text id="Input" font-family="GoogleSans-Regular, Google Sans" font-size="10" font-weight="normal" fill="#FFFFFF">
+                        <tspan x="28.8328049" y="41.0609756">Input</tspan>
+                    </text>
+                </g>
+                <text id="Slot-match" font-family="GoogleSans-Regular, Google Sans" font-size="10" font-weight="normal" fill="#7E7E7E">
+                    <tspan x="390.035" y="106">Slot match</tspan>
+                </text>
+                <g id="Group" transform="translate(392.000000, 101.000000)">
+                    <g id="Group-6" transform="translate(224.000000, 31.000000)">
+                        <rect id="Rectangle" fill="#737373" transform="translate(58.000000, 58.000000) rotate(45.000000) translate(-58.000000, -58.000000) " x="17" y="17" width="82" height="82" rx="8"></rect>
+                        <text id="Transition?" font-family="GoogleSans-Regular, Google Sans" font-size="10" font-weight="normal" fill="#FFFFFF">
+                            <tspan x="35.34" y="62">Transition?</tspan>
+                        </text>
+                    </g>
+                    <text id="Custom-intent-match" font-family="GoogleSans-Regular, Google Sans" font-size="10" font-weight="normal" fill="#7E7E7E">
+                        <tspan x="45.22" y="62">Custom</tspan>
+                        <tspan x="34.755" y="75">intent match</tspan>
+                    </text>
+                    <text id="No" font-family="GoogleSans-Regular, Google Sans" font-size="10" font-weight="normal" fill="#7E7E7E">
+                        <tspan x="294.03" y="10">No</tspan>
+                    </text>
+                    <text id="Yes,-intent-match-tr" font-family="GoogleSans-Regular, Google Sans" font-size="10" font-weight="normal" fill="#7E7E7E">
+                        <tspan x="294" y="159">Yes, intent</tspan>
+                        <tspan x="294" y="172">match transition</tspan>
+                    </text>
+                    <text id="No-match" font-family="GoogleSans-Regular, Google Sans" font-size="10" font-weight="normal" fill="#7E7E7E">
+                        <tspan x="0.14" y="154">No match</tspan>
+                    </text>
+                </g>
+                <text id="Conditional-transiti" font-family="GoogleSans-Regular, Google Sans" font-size="10" font-weight="normal" fill="#898989">
+                    <tspan x="0" y="74">Conditional</tspan>
+                    <tspan x="0" y="87">transition</tspan>
+                </text>
+            </g>
+            <line x1="591" y1="307" x2="591.499908" y2="191" id="Line-2" stroke="#737373" stroke-width="2" stroke-linecap="square"></line>
+        </g>
+    </g>
+</svg>

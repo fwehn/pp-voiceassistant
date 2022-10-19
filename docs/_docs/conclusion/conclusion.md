@@ -54,6 +54,7 @@ Und es gibt keinen Installer für Leute, die sich mit IT nicht auskennen.
 
 [//]: # (TODO wie verlief das projekt?)
 [//]: # (TODO gab es Probleme?)
+[//]: # (TODO bachelorarbeit?)
 
 ## Was wären die nächsten Schritte?
 

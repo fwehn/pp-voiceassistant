@@ -16,7 +16,7 @@ Dabei habe ich versucht mich auf offizielle Dokumentationen zu beschränken.
 
 [Google Assistant Dokumentation](https://developers.google.com/assistant)
 [Google I/O'19](https://www.youtube.com/watch?v=dpNrq_wiqGs&t=1s)
-
+[Behind the Actions](https://www.youtube.com/playlist?list=PLOU2XLYxmsIKP4Hh9gQO54naZ8V7mDEQi)
 
 ## Home Assistant
 

@@ -11,6 +11,8 @@ Es werden die benötigten Angaben und deren Funktion erklärt.
 
 Ich erkläre die Funktionen und Begriffe anhand folgenden Beispiels aus dem [HelloWorld](https://github.com/fwehn/pp-voiceassistant/blob/main/src/server/skills/HelloWorld) Skill:  
 
+[//]: # (TODO variationen in answers einbinden)
+
 ````json
 {
   "invocation": "Hallo Welt",

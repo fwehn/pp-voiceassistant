@@ -8,8 +8,8 @@ In diesem Praxisprojekt geht es darum, für die Opensource-Lösung Rhasspy ein m
 Das System soll einer vereinfachten Version von [Amazons Skills-System](https://www.amazon.de/b?ie=UTF8&node=10068460031) ähneln.  
 Dazu soll eine Anwendung lokal auf dem Rhasspy-Host laufen, welche dann wiederum mittels eines Skillservers oder durch lokale Installation, neue Funktionen für den Sprachassistenten zur Verfügung stellt.  
 Für etwaige Entwicklerinnen und Entwickler soll es möglichst leicht sein, neue Skills zu entwickeln und zu testen.  
-Dazu stelle ich ein SDK (Software Development Kit) zur Verfügung, welches einige nützliche Funktionen enthält, die die Entwickler nutzen können (wie z.B. eine Funktion für die Sprachausgabe).  
-Für den jeweiligen Endnutzer stellt das System neben dem CLI (Command Line Interface) auch ein Webinterface zur Verfügung, um möglichst leicht neue Skills zu finden, zu installieren und zu verwalten.  
+Dazu stelle ich ein SDK (Software Development Kit) zur Verfügung, welches einige nützliche Funktionen enthält, welche die Entwicklerinnen und Entwickler nutzen können (wie z.B. eine Funktion für die Sprachausgabe).  
+Das System stellt neben dem [CLI](./client/cli.md) (Command Line Interface) auch ein [Webinterface](./client/webinterface.md) zur Verfügung, um möglichst leicht neue Skills zu finden, zu installieren und zu verwalten.  
 
 
 ## Aufbau
@@ -20,7 +20,7 @@ In diesem Abschnitt habe ich mich mit einigen verschiedenen Systemen auseinander
 Ich habe mir dabei die beiden Sprachassistenten Amazon Alexa und Google Assistant angeschaut und die Smarthome Anwendung Home Assistant.  
 
 Im Abschnitt "Client" beschreibe ich mein eigenes System.  
-Dabei handelt es sich um die Anwendung für die Endnutzerinnen und Endnutzer, also die Anwendung, die die einzelnen Skills installiert und verwaltet.  
+Dabei handelt es sich um die Anwendung für die Endnutzerinnen und Endnutzer, also die Anwendung, welche die einzelnen Skills installiert und verwaltet.  
 Wie werden die Skills installiert?  
 Wie funktioniert das Webinterface?  
 
@@ -45,7 +45,7 @@ Mit einem Skill bezeichne ich eine Funktion oder ein Feature, welches eigenstän
 Bei meinem Projekt handelt es sich um ein Skillsystem, also einer Anwendung, mit der man jene Skills/Funktionen herunterladen kann.  
 Ein solcher Skill kann alles Mögliche sein, beispielsweise ein Wetterdienst oder ein Wecker.  
 Der Name stammt von Amazon Alexa und ich habe mich dazu entschlossen diesen zu übernehmen, da ich ihn sehr passend finde.  
-Bei Google nennen sich diese Funktionen Actions.  
+Bei Google nennen sich diese Funktionen "Actions".  
 
 ### Intents
 
@@ -58,7 +58,7 @@ Sie Beschreiben eben diese unterschiedlichen Befehle.
 ### Slots
 
 Ein Slot bezeichnet eine Variable im Befehl.  
-Wenn ich also wissen möchte, wie das Wetter in Köln ist, könnte ich mit "..., wie ist das Wetter in ``Köln``?" danach fragen.  
-Dabei wäre ``Köln`` der Slot.  
-Diesen Slot könnte man auch durch andere Städtenamen ersetzten.  
-Es geht darum, dass man nicht für jede mögliche Stadt einen neuen Befehl erstellen muss, sondern eine Liste an Städten hat, die an dieser Stelle eingesetzt werden können.  
+Wenn ich also wissen möchte, wie das Wetter am nächsten Donnerstag ist, könnte ich mit "..., wie ist das Wetter am ``Donnerstag``?" danach fragen.  
+Dabei wäre ``Donnerstag`` der Slot.  
+Diesen Slot könnte man auch durch andere Wochentage ersetzten.  
+Es geht darum, dass man nicht für jeden Wochentag einen neuen Befehl erstellen muss, sondern eine Liste mit den Wochentagen hat, die an dieser Stelle eingesetzt werden können.  

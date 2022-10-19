@@ -4,20 +4,20 @@ permalink: /docs/evaluation/amazon-alexa/
 ---
 
 Einer der meist verbreitetsten Sprachassistenten ist Amazons Alexa, welcher auf sämtlichen Amazon Geräten, wie dem FireTV oder der gesamten Echo-Reihe verfügbar ist.  
-Amazon stellt dabei eine sehr große Bibliothek aus Skills zur Verfügung und ermöglicht es Entwicklern recht einfach neue Skills zu erstellen und zu veröffentlichen.   
+Amazon stellt dabei eine sehr große Bibliothek aus Skills zur Verfügung und ermöglicht es Entwicklerinnen und Entwicklern recht einfach, neue Skills zu erstellen und zu veröffentlichen.   
 
-Als Entwickler gibt es viele verschiedene Möglichkeiten einen Skill zu entwickeln, zum Beispiel als [AWS Lambda Function](https://developer.amazon.com/en-US/docs/alexa/custom-skills/host-a-custom-skill-as-an-aws-lambda-function.html) oder als HTTPS Web-Service.  
+Als Entwicklerin oder Entwickler gibt es viele verschiedene Möglichkeiten einen Skill zu entwickeln, zum Beispiel als [AWS Lambda Function](https://developer.amazon.com/en-US/docs/alexa/custom-skills/host-a-custom-skill-as-an-aws-lambda-function.html) oder als HTTPS Web-Service.  
 Ich beschränke mich hier auf [Alexa Hosted Skills](https://developer.amazon.com/en-US/docs/alexa/hosted-skills/build-a-skill-end-to-end-using-an-alexa-hosted-skill.html) in der Programmiersprache JavaScript (bzw. NodeJS).  
 
 
 
 ## Befehlsstruktur
+
 Ein Befehl bei Alexa ist wie folgt aufgebaut:  
 ``<wake word>, <launch> <Invocation name> <utterance>``  
 Was die einzelnen Teile des Befehls bedeuten, habe ich [hier](./../skill/instruction.md#aufbau-eines-befehls) etwas ausführlicher beschrieben.  
 Die einzelnen Teile eines Befehls können auch in anderer Reihenfolge auftreten, sodass der Invocation Name nach der Utterance kommt.  
 Amazon stellt dazu einige Füllwörter bereit, welche genutzt werden können, um einen natürlich klingenden Satz zu bilden.  
-
 
 ## Ordnerstruktur
 
@@ -52,7 +52,7 @@ Ein Alexa Skill ist wie folgt aufgebaut:
     │       └── < More folders for APL documents>                 
     └── skill.json
 ````
-*Aus der [Dokumentation](https://developer.amazon.com/en-US/docs/alexa/conversations/acdl-understand-directory-structure.html) von Alexa Conversations (Beta)*
+*Aus der [Dokumentation](https://developer.amazon.com/en-US/docs/alexa/conversations/acdl-understand-directory-structure.html) von Alexa Conversations (Beta)*  
 
 Da dieser Aufbau für sehr viele unterschiedliche Skills funktionieren muss und Alexa sehr viele Funktionen bietet, fokussiere ich mich hier auf einige wenige Unterverzeichnisse.  
 
@@ -76,7 +76,7 @@ Das Verzeichnis ``response/prompt`` beinhaltet Antworten für [Alexa Conversatio
 Daher beachte ich auch das Verzeichnis ``skill-package/conversations`` nicht.  
 Bei der Datei ``skill.json`` handelt es sich um einige Metadaten, die in erster Linie auch für Alexa Conversations relevant sind.  
 
-Durch diese Vereinfachung erhalte ich eine kompaktere Ordnerstruktur, welche eher dem Umfang meines Projekts entspricht.
+Durch diese Vereinfachung erhalte ich eine kompaktere Ordnerstruktur, welche eher dem Umfang meines Projekts entspricht.  
 
 - ``.ask``: In diesem Verzeichnis befindet sich Amazons SDK, das [**A**lexa **S**kills **K**it](https://developer.amazon.com/de-DE/alexa/alexa-skills-kit).
 - ``lambda``: Hier befindet sich die tatsächliche Logik, in Form eines NodeJS-Projekts mit ``package.json`` und den jeweiligen JavaScript-Dateien.
@@ -274,7 +274,7 @@ Unter dem Punkt ``dialog`` finden sich Angaben zu Alexas Dialog-System.
 Dabei werden einige Intents definiert, welche Slots nutzen.  
 Wird dann beim Aufruf ein Slot nicht genannt (zum Beispiel ein Planet), so kann man unter ``prompts`` sätze definieren, mit denen Alexa nach den jeweiligen Slots fragt.  
 
-Ein solches Dialogsystem sprengt allerdings den Rahmen dieses Projekts, daher werde ich nicht näher auf dieses System eingehen. 
+Ein solches Dialogsystem sprengt allerdings den Rahmen dieses Projekts, daher werde ich nicht näher auf dieses System eingehen.  
 
 ## ASK - Alexa Skills Kit
 

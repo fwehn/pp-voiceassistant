@@ -3,6 +3,8 @@ title: SDK
 permalink: /docs/skills/sdk/
 ---
 
+[//]: # (todo add documentation for translate raw tokens)
+
 Ich habe, für die Entwicklung neuer Skills, ein eigenes SDK (**S**oftware **D**evelopment **K**it) erstellt.  
 Dieses kümmert sich, in Zusammenarbeit mit dem [Skillmanager](./../client/skillmanager.md), um nützliche Funktionen wie zum Beispiel die Sprachausgabe, oder aber den Umgang mit den [Antwortsätzen](./locales.md#answer).  
 
@@ -143,6 +145,9 @@ Damit diese jedoch mit einigen Werten erweitert werden können, muss ein solcher
 Dazu gibt man einen Satz wie zum Beispiel ``Es ist # Uhr #`` (aus [GetTime](https://github.com/fwehn/pp-voiceassistant/blob/main/src/server/skills/GetTime/1.0/src/index.js)) an.  
 Die Funktion ``generateAnswer`` ersetzt dann jeden Separator (standardmäßig ``#``) mit den Werten, die als Array übergeben werden.  
 
+[//]: # (TODO möglichkeit für mehere answers)
+[//]: # (TODO generateRandomAnswer)
+
 ````javascript
 function generateAnswer(vars = [""], separator = "#"){
     let parts = sessionData.answer.split(separator);
@@ -161,6 +166,7 @@ Von dort wird die Antwort ausgelesen.
 
 ### Beispiel
 
+[//]: # (todo change with index)
 ````javascript
 const customSdk = require("@fwehn/custom_sdk");
 
@@ -178,7 +184,7 @@ Dieser Satz wird dann mit der ``say``-Funktion ausgegeben.
 ## Config Variablen 
 
 Mit der Funktion [``config``](#config) wird nun das Feld ``variables`` im JS-Object ``configObject`` gesetzt.  
-Beim Aufruf der Funktionen ``getVaraibles`` und ``getVariable`` werden nun die, zum im [``sessionData``](#sitzungsdaten) gespeicherten ``skill`` passenden, Variablen ausgelesen und zurückgegeben.  
+Beim Aufruf der Funktionen ``getVaraibles`` und ``getVariable`` werden jetzt die, zum im [``sessionData``](#sitzungsdaten) gespeicherten ``skill`` passenden, Variablen ausgelesen und zurückgegeben.  
 
 ````javascript
 function getAllVariables(){
