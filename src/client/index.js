@@ -16,7 +16,7 @@ function getInitStatus(){
 skillManager.loadSkills();
 // setting some configurations for sdk to work smoothly
 customSdk.config({
-    mqtt: process.env.MQTTHOST || "localhost",
+    mqtt: process.env.MQTTHOST || "127.0.0.1",
     port: process.env.MQTTPORT || "1883",
     intentHandler: skillManager.customIntentHandler,
     zigbeeTopic: process.env.ZIGBEETOPIC || "zigbee2mqtt",
@@ -24,10 +24,15 @@ customSdk.config({
 });
 // Clears Zigbee-list, inits the sdk and registers the default launch slots in Rhasspy
 rhasspy.postSlots("zigbee2mqtt", [], true).catch(console.error);
-customSdk.init().catch(console.error);
+customSdk.init().catch(console.error)
 rhasspy.postSlots("launch", defaults["launch"], true)
-    .then(() => rhasspy.trainRhasspy().then(() => initiated = true))
+    .then(async () => {
+        await rhasspy.postSlots("days", defaults["days"], true).catch(console.error);
+        await rhasspy.postSlots("months", defaults["months"], true).catch(console.error);
+        rhasspy.trainRhasspy().then(() => initiated = true);
+    })
     .catch(console.error);
+
 
 // Callback function to register Zigbee devices as a Slot in Rhasspy
 function updateZigbeeList(){

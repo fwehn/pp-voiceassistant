@@ -9,6 +9,8 @@ const fs = require("fs");
 
 const port = process.env.PORT || 3000;
 
+getVersionFile();
+
 
 // defining middleware
 app.use(fileUpload({
@@ -71,6 +73,12 @@ app.get('/skill/:skillName/:versionTag', (req, res) => {
 // Checks if the latest Version has same tag as requested
 app.get('/update/:locale/:skillName/:version', (req, res) => {
     let tag = getLatestTag(req.params.skillName);
+
+    if (!tag) {
+        res.json({update: false, version: "Skill not existing"});
+        return;
+    }
+
     let path = `${__dirname}/skills/${req.params.skillName}/${tag}`;
     let manifest = JSON.parse(fs.readFileSync(`${path}/manifest.json`).toString());
     let version = req.params.version;
@@ -91,6 +99,11 @@ app.get('/update/:locale/:skillName/:version', (req, res) => {
 // Zips up requested skill and returns it
 app.get('/download/:skillName/:versionTag', async (req, res) => {
     let tag = req.params.versionTag === "latest" ? getLatestTag(req.params.skillName) : req.params.versionTag;
+    if (!tag){
+        res.send("Error: Skill not existing");
+        return;
+    }
+
     let dirPath = `${__dirname}/skills/${req.params.skillName}/${tag}`;
     await res.zip({
         files: [{
@@ -140,7 +153,7 @@ app.post('/upload', (req, res) => {
 });
 
 function updateLatest(skill, tag){
-    let versionFile = JSON.parse(fs.readFileSync(`${__dirname}/versions.json`).toString());
+    let versionFile = getVersionFile();
 
     if (!versionFile.hasOwnProperty(skill)) versionFile[skill] = [];
 
@@ -148,14 +161,29 @@ function updateLatest(skill, tag){
     versionFile[skill] = [tag, ...versionFile[skill]];
     console.log(versionFile)
 
-    fs.writeFileSync(`${__dirname}/versions.json`, JSON.stringify(versionFile));
+    writeVersionFile(versionFile);
 }
 
 function getLatestTag(skill){
-    let versionFile = JSON.parse(fs.readFileSync(`${__dirname}/versions.json`).toString());
-    return versionFile[skill][0];
+    let skillData = getVersionFile()[skill];
+    return (skillData || [])[0];
+}
+
+function getVersionFile(){
+    try{
+        return JSON.parse(fs.readFileSync(`${__dirname}/configs/versions.json`).toString());
+    }catch(err){
+        console.error(err);
+        if (err.code === 'ENOENT') writeVersionFile({});
+
+        return {};
+    }
+}
+
+function writeVersionFile(data){
+    fs.writeFileSync(`${__dirname}/configs/versions.json`, JSON.stringify(data));
 }
 
 app.listen(port,() => {
-    console.log(`Server listening on: http://localhost:${port}`);
+    console.log(`Server listening on: http://127.0.0.1:${port}`);
 });

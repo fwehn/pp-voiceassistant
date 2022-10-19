@@ -20,7 +20,8 @@
                 {{ skill.version }}
             </td>
             <td>
-                {{ skill.active }}
+                <span v-if="skill.active" @mouseover="hovering = skill.name" @mouseleave="hovering = null" v-on:click="setActive(skill.name, false)" :class="hovering === skill.name ? 'fa-solid fa-x' : 'fa-solid fa-check'" ></span>
+                <span v-if="!skill.active" @mouseover="hovering = skill.name" @mouseleave="hovering = null" v-on:click="setActive(skill.name, true)" :class="hovering === skill.name ? 'fa-solid fa-check' : 'fa-solid fa-x'" ></span>
             </td>
             <td>
                 <button v-on:click="removeSkill(skill.name)" class="fas fa-trash"></button>
@@ -34,7 +35,8 @@
     Vue.createApp({
         data() {
             return {
-                skills: data.skills
+                skills: data.skills,
+                hovering: null
             }
         },
         methods: {
@@ -45,6 +47,17 @@
                         alert(data.message);
                         location.reload();
                     }).catch(console.error);
+            },
+            setActive: function (skillName, state){
+                fetch(`${window.location.origin}/setActive/${skillName}/${state}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        alert(data.message);
+                        location.reload();
+                    }).catch(data => {
+                    alert(data.message);
+                    location.reload();
+                });
             }
         }
     }).mount('#DivOverview');

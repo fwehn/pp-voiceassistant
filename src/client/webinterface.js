@@ -180,7 +180,7 @@ function startUI(loc = "de_DE", port = 3000){
     app.use(express.static(`${__dirname}/webinterface/public`));
 
     app.listen(port, () => {
-        console.log(`Server listening on: http://localhost:${port}`);
+        console.log(`Server listening on: http://127.0.0.1:${port}`);
     })
 }
 

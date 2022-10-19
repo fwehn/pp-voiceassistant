@@ -17,8 +17,10 @@ let sessionData = {
     siteId: "default",
     sessionId: "",
     skill: "",
-    answer: ""
+    answers: ""
 };
+
+let rawTokens = {};
 
 // function to change the configObject from outside
 function config(options = {}){
@@ -110,19 +112,35 @@ function say(text = ""){
     client.publish('hermes/tts/say', JSON.stringify(message));
 }
 
+// function to save the raw token list from incoming intent
+function setRawTokens(rawTokenList) {
+    rawTokens = rawTokenList;
+}
+
+// function to translate token value to raw token for the tts system
+function getRawToken(tokenValue) {
+    return rawTokens[tokenValue] || "Token Undefined";
+}
+
 // internal setter for answer
-function setAnswer(answer){
-    sessionData.answer = answer;
+function setAnswers(answers){
+    sessionData.answers = answers;
 }
 
 // function to generate answer in skill
-function generateAnswer(vars = [""], separator = "#"){
-    let parts = sessionData.answer.split(separator);
+function generateAnswer(answerIndex = 0 ,vars = [""], separator = "#"){
+    let parts = sessionData.answers[answerIndex].split(separator);
     let answer = parts[0];
     for (let i = 1; i < parts.length; i++){
         answer = answer + vars[i-1] + parts[i];
     }
     return answer;
+}
+
+// function to generate random answer from list
+function generateRandomAnswer(vars = [""], separator = "#"){
+    let randomAnswerIndex = Math.floor(Math.random() * sessionData.answers.length);
+    return generateAnswer(randomAnswerIndex, vars, separator);
 }
 
 // function to get specific variable, set on the details page
@@ -168,5 +186,5 @@ function fail(error, message = ""){
 }
 
 module.exports = {
-    config, init, publishMQTT, getZigbeeDevices, getZigbeeGroups,say, generateAnswer, setAnswer, getVariable, getAllVariables, fail
+    config, init, publishMQTT, getZigbeeDevices, getZigbeeGroups,say, generateAnswer, generateRandomAnswer, setRawTokens, getRawToken, setAnswers, getVariable, getAllVariables, fail
 }

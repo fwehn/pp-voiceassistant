@@ -6,14 +6,22 @@ const rhasspy = require("./rhasspy.js");
 const path = require("path")
 const {exec} = require("child_process");
 
+if (Object.keys(getSkillConfigs()).length === 0) writeSkillConfigs({});
+
 // Currently loaded Skills
 let skills = {};
-// Getter for Skills
+/** Getter for Skills
+ *
+ * @returns {Object} a list of currently loaded skills
+ */
 function getSkills(){
     return skills;
 }
 
-// File-Loader for newly downloaded Skills
+/** File-Loader for newly downloaded Skills
+ *
+ * @param {string} locale The locale which is currently used
+ */
 function loadSkills(locale = "de_DE"){
     // Deletes old files from the require.cache
     Object.keys(require.cache).filter(entry => {
@@ -34,10 +42,17 @@ function loadSkills(locale = "de_DE"){
     skills = skillsLocal;
 }
 
-// Downloads the latest version of a Skill as zip, unzips it and installs the required dependencies
+//TODO change axios to something better :)
+//Its throwing some errors while using it with dockers internal dns
+/** Downloads a desired version of a skill as zip, unzips it and installs the required dependencies
+ *
+ * @param {string} name The name of the skill
+ * @param {string} tag The desired version tag
+ * @returns {Promise<string>} On success it will return the downloaded version Tag
+ */
 function downloadSkill(name = "HelloWorld", tag = "latest") {
     return new Promise((resolve, reject) => {
-        axios.get(`http://${process.env.SERVER || "localhost:3000"}/download/${name}/${tag}`, {
+        axios.get(`http://${process.env.SERVER || "127.0.0.1:3000"}/download/${name}/${tag}`, {
             responseType: "arraybuffer"
         }).then(res => {
             let zip = new admZip(res.data);
@@ -54,7 +69,13 @@ function downloadSkill(name = "HelloWorld", tag = "latest") {
     })
 }
 
-// Function used by the webinterface to save Uploaded skill files to the skill directory and installs the required dependencies
+/** Function used by the webinterface to save Uploaded skill files to the skill directory and installs the required dependencies
+ *
+ * @param {string} name The name of the skill
+ * @param {string} tag The tag this version should have
+ * @param {Blob} data The data which represents the skill (code as zipped files)
+ * @returns {Promise<string>} On success it will return the version tag
+ */
 function uploadSkill(name, tag, data){
     return new Promise((resolve, reject) => {
         try{
@@ -75,7 +96,12 @@ function uploadSkill(name, tag, data){
 }
 
 
-// Deletes unused packages
+/** Deletes unused packages
+ *
+ * @param {string} locale The locale which is currently used
+ * @param {string} skill Desired skill from which the dependencies should be deleted
+ * @returns {Promise<string>} A short success or failure message
+ */
 function deleteDependencies(locale, skill){
     return new Promise((resolve, reject) => {
         let installed = getInstalledSkills(locale);
@@ -112,7 +138,12 @@ function deleteDependencies(locale, skill){
     });
 }
 
-// Installs required packages
+/** Installs required packages
+ *
+ * @param {string} skill Desired skill from which the dependencies should be installed
+ * @param {string} version Desired version from which the dependencies should be installed
+ * @returns {Promise<string>} A short success or failure message
+ */
 function installDependencies(skill, version){
     return new Promise((resolve, reject) => {
         let defaultDependencies = getDefaults()["dependencies"];
@@ -139,7 +170,12 @@ function installDependencies(skill, version){
     });
 }
 
-// Deletes the Local Skill-Files
+/** Deletes the Local Skill-Files
+ *
+ * @param {string} name Name of the skill which should be deleted
+ * @param {string} locale The locale which is currently used
+ * @returns {Promise<string>} A short success or failure message
+ */
 function deleteLocalSkillFiles(name = "HelloWorld", locale = "de_DE"){
     return new Promise((resolve, reject) => {
         deleteDependencies(locale, name).then(() => {
@@ -159,10 +195,14 @@ function deleteLocalSkillFiles(name = "HelloWorld", locale = "de_DE"){
     })
 }
 
-// Get a list of Skills on Server
+/** Get a list of Skills on Server
+ *
+ * @param {string} locale The locale which is currently used
+ * @returns {Promise<*[]>} A list of available skills
+ */
 function getRemoteSkills(locale = "de_DE") {
     return new Promise((resolve, reject) => {
-        axios.get(`http://${process.env.SERVER || "localhost:3000"}/skills/${locale}`).then(res => {
+        axios.get(`http://${process.env.SERVER || "127.0.0.1:3000"}/skills/${locale}`).then(res => {
             let skills = [];
             let installed = getInstalledSkills();
             for (let i in res.data) {
@@ -181,7 +221,11 @@ function getRemoteSkills(locale = "de_DE") {
     });
 }
 
-// Get a list of locally installed skills
+/** Get a list of locally installed skills
+ *
+ * @param {string} locale The locale which is currently used
+ * @returns {string[]} A list of installed skills
+ */
 function getInstalledSkills(locale = "de_DE"){
     let path = `${__dirname}/skills`;
     let skills = [];
@@ -196,7 +240,11 @@ function getInstalledSkills(locale = "de_DE"){
     return skills;
 }
 
-// Shows Overview of local Skill files
+/** Shows Overview of local Skill files
+ *
+ * @param {string} locale The locale which is currently used
+ * @returns {Array<Object>} Some information about every installed skill
+ */
 function getSkillsOverview(locale = "de_DE"){
     let res = [];
     let skills = getInstalledSkills(locale)
@@ -204,7 +252,6 @@ function getSkillsOverview(locale = "de_DE"){
 
     for (let i in skills){
         let localeFile = getLocale(skills[i], locale);
-        // let manifestFile = getManifest(skills[i]);
         let skillConfig = configs[skills[i]] || {};
 
         res.push({
@@ -218,7 +265,12 @@ function getSkillsOverview(locale = "de_DE"){
     return res;
 }
 
-// Get some Detailed Information of a Skill based on locale
+/** Get some Detailed Information of a Skill based on locale
+ *
+ * @param {string} name Name of the skill
+ * @param {string} locale The locale which is currently used
+ * @returns {{}} Detailed information about this skill
+ */
 function getSkillDetails(name = "HelloWorld", locale = "de_DE"){
     // Loads all required information
     let installed = getInstalledSkills(locale);
@@ -237,8 +289,15 @@ function getSkillDetails(name = "HelloWorld", locale = "de_DE"){
     let launch = defaults["launch"].sort(()=> Math.random() - 0.5);
     launch = launch.slice(0, 5);
 
+    let days = defaults["days"].slice(0,4);
+    days = [...days, "..."];
+
+    let months = defaults["months"].slice(0,4);
+    months = [...months, "..."];
+
+
     let slots = localeFile.slots;
-    slots = {launch: launch.sort(), zigbee2mqtt: zigbeeNames.sort(), ...slots};
+    slots = {launch: launch.sort(), zigbee2mqtt: zigbeeNames.sort(), days: days, months: months, ...slots};
 
     // Formats the sentences for a better readability
     let formattedSentences = [];
@@ -298,7 +357,12 @@ function getSkillDetails(name = "HelloWorld", locale = "de_DE"){
     }
 }
 
-// Generates a list of all options, set in the skillConfigs.json or default values from manifest.json
+/** Generates a list of all options, set in the skillConfigs.json or default values from manifest.json
+ *
+ * @param {{}} skillOptions A list of all declared options
+ * @param {{}} skillConfig A list of all defined options
+ * @returns {*[]} A formatted list of these options
+ */
 function getFormattedOptionsList(skillOptions, skillConfig = {}){
     let res = [];
 
@@ -319,7 +383,13 @@ function getFormattedOptionsList(skillOptions, skillConfig = {}){
     return res;
 }
 
-// Saves/Overwrites the options of a skill in skillConfigs.json
+/** Saves/Overwrites the options of a skill in skillConfigs.json
+ *
+ * @param {string} skill The desired skill from which the options are to be set
+ * @param {{}} values The new values of the options
+ * @param {string} locale The locale which is currently used
+ * @returns {Promise<unknown>} A short success or failure message
+ */
 function saveConfig(skill, values, locale){
     return new Promise((resolve, reject) => {
         try {
@@ -356,7 +426,11 @@ function saveConfig(skill, values, locale){
     });
 }
 
-// Returns all Config-Variables of a specific locale
+/** Returns all Config-Variables of a specific locale
+ *
+ * @param {string} locale The locale which is currently used
+ * @returns {{}} All config variables which are currently defined
+ */
 function getAllConfigVariables(locale = "de_DE"){
     let res = {};
     let installed = getInstalledSkills(locale);
@@ -379,7 +453,12 @@ function getAllConfigVariables(locale = "de_DE"){
     return res;
 }
 
-//Sets the "active" Flag in skillConfigs.json
+/** Sets the "active" Flag in skillConfigs.json
+ *
+ * @param {string} skill The skill of which the active flag should be set
+ * @param {boolean} state The new State of the active flag
+ * @returns {Promise<string>} A short success or failure message
+ */
 function setActivateFlag(skill, state){
     return new Promise((resolve, reject) => {
         try{
@@ -396,7 +475,12 @@ function setActivateFlag(skill, state){
     });
 }
 
-// Activates a Skill
+/** Activates a Skill
+ *
+ * @param {string} skill The skill which should be activated
+ * @param {string} locale The locale which is currently used
+ * @returns {Promise<string>} A short success or failure message
+ */
 function activateSkill(skill, locale = "de_DE"){
     return new Promise((resolve, reject) => {
         let installed = getInstalledSkills(locale);
@@ -409,7 +493,12 @@ function activateSkill(skill, locale = "de_DE"){
     })
 }
 
-// Deactivates a Skill
+/** Deactivates a Skill
+ *
+ * @param {string} skill The skill which should be deactivated
+ * @param {string} locale The locale which is currently used
+ * @returns {Promise<string>} A short success or failure message
+ */
 function deactivateSkill(skill, locale = "de_DE"){
     return new Promise((resolve, reject) => {
         let installed = getInstalledSkills(locale);
@@ -422,48 +511,78 @@ function deactivateSkill(skill, locale = "de_DE"){
     })
 }
 
-// returns manifest.json of a specific skill
+/** Getter for manifest information of a skill
+ *
+ * @param {string} skill Skill from which to get the manifest information
+ * @param {string} version Desired version of the skill
+ * @returns {{}} Manifest information
+ */
 function getManifest(skill, version){
-    if (!version) version = getVersion(skill)
+    if (!version) version = getVersion(skill);
     return JSON.parse(fs.readFileSync(`${__dirname}/skills/${skill}/${version}/manifest.json`).toString());
 }
 
-// returns localeFile of skill
+/** Getter for the information of a skill's locale file
+ *
+ * @param {string} skill Skill from which to get the manifest information
+ * @param {string} locale The locale which is currently used
+ * @returns {{}} Information from the locale file of skill
+ */
 function getLocale(skill, locale = "de_DE"){
     let version = getVersion(skill);
     return JSON.parse(fs.readFileSync(`${__dirname}/skills/${skill}/${version}/locales/${locale}.json`).toString());
 }
 
-// reads the skillConfigs.json
+/** Reads from the skillConfigs file
+ *
+ * @returns {{}} Current configurations
+ */
 function getSkillConfigs(){
-    return JSON.parse(fs.readFileSync(`${__dirname}/skillConfigs.json`).toString());
+    return JSON.parse(fs.readFileSync(`${__dirname}/configs/skillConfigs.json`).toString());
 }
 
-// writes the skillConfigs.json
+/** Writes to the skillConfigs file
+ *
+ * @param {{}} data Data to write it the skillConfigs file
+ */
 function writeSkillConfigs(data){
-    fs.writeFileSync(`${__dirname}/skillConfigs.json`, JSON.stringify(data));
+    fs.writeFileSync(`${__dirname}/configs/skillConfigs.json`, JSON.stringify(data));
 }
 
-// getter for the version
+/** Getter for the version of a skill
+ *
+ * @param {string} skill Desired skill from which to get the version
+ * @returns {string} The installed version of the skill
+ */
 function getVersion(skill){
     let configs = getSkillConfigs();
     return configs[skill]["version"];
 }
 
-// setter for the version
+/** Setter for the version of a skill
+ *
+ * @param {string} skill Desired skill from which to set the version
+ * @param {string} version The new version
+ */
 function setVersion(skill, version){
     let configs = getSkillConfigs();
     configs[skill]["version"] = version;
     writeSkillConfigs(configs);
 }
 
-// reads the defaults.json
+/** Reads the defaults.json
+ *
+ * @returns {{}} Every information in the defaults.json file
+ */
 function getDefaults(){
     return JSON.parse(fs.readFileSync(`${__dirname}/defaults.json`).toString());
-
 }
 
-// Get Available Updates based on version in <SkillName>/latest/manifest.json
+/** Get Available Updates based on version in the manifest file
+ *
+ * @param {string} locale The locale which is currently used
+ * @returns {Promise<unknown>} A list of available updates
+ */
 function getUpdates(locale = "de_DE"){
     return new Promise(async (resolve, reject) => {
         let installed = getInstalledSkills(locale);
@@ -471,7 +590,7 @@ function getUpdates(locale = "de_DE"){
 
         for (let i in installed) {
             let version = getVersion(installed[i]);
-            await axios.get(`http://${process.env.SERVER || "localhost:3000"}/update/${locale}/${installed[i]}/${version}`).then(res => {
+            await axios.get(`http://${process.env.SERVER || "127.0.0.1:3000"}/update/${locale}/${installed[i]}/${version}`).then(res => {
                 if (res.data["update"]) {
                     availableUpdates[installed[i]] = res.data["version"];
                 }
@@ -482,7 +601,13 @@ function getUpdates(locale = "de_DE"){
     });
 }
 
-// Returns a funktion based on IntentName
+/** Returns a funktion based on IntentName
+ *
+ * @param {string} intentName Name of the recognized intent
+ * @param {{}} slots Recognized slots
+ * @param {string} locale The locale which is currently used
+ * @returns {{}} Function name, params and the answers belonging to the recognized intent
+ */
 function getFunctionBYIntentName(intentName, slots, locale = "de_DE"){
     let skillName = intentName.split("_")[0];
     let intentNumber = intentName.split("_")[1];
@@ -497,12 +622,16 @@ function getFunctionBYIntentName(intentName, slots, locale = "de_DE"){
     return {
         "name": intents[intentNumber]["function"],
         "params": params,
-        "answer": intents[intentNumber]["answer"]
+        "answers": intents[intentNumber]["answers"]
     };
 }
 
 
-// Custom Intent Handler to call functions based on Intent and Slots
+/** Custom Intent Handler to call functions based on Intent and Slots
+ *
+ * @param {string} topic MQTT-Topic the skillmanager is listening to ('hermes/intent/#')
+ * @param {string} message MQTT-Message containing all the information about the recognized intents and slots
+ */
 function customIntentHandler(topic, message){
     let slots = {};
     let formatted = JSON.parse(message.toString());
@@ -512,18 +641,23 @@ function customIntentHandler(topic, message){
         return;
     }
 
+    let rawTokens = {};
     for (let i in formatted["slots"]){
         let currentSlot = formatted["slots"][i];
 
         if (currentSlot["slotName"] !== "launch"){
-            slots[currentSlot["slotName"]] = currentSlot["value"]["value"];
+            let slotValue = currentSlot["value"]["value"];
+
+            slots[currentSlot["slotName"]] = slotValue;
+            rawTokens[slotValue] = currentSlot["rawValue"];
         }
     }
+    customSdk.setRawTokens(rawTokens);
 
     let fun = getFunctionBYIntentName(formatted["intent"]["intentName"], slots, process.env.LOCALE || "de_DE");
 
-    if (fun.hasOwnProperty("name") && fun.hasOwnProperty("params") && fun.hasOwnProperty("answer")){
-        customSdk.setAnswer(fun["answer"]);
+    if (fun.hasOwnProperty("name") && fun.hasOwnProperty("params") && fun.hasOwnProperty("answers")){
+        customSdk.setAnswers(fun["answers"]);
 
         getSkills()[formatted["intent"]["intentName"].split("_")[0]][fun["name"]].apply(this, fun["params"]);
     }
