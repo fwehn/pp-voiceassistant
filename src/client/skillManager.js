@@ -52,7 +52,7 @@ function loadSkills(locale = "de_DE"){
  */
 function downloadSkill(name = "HelloWorld", tag = "latest") {
     return new Promise((resolve, reject) => {
-        axios.get(`http://${process.env.SERVER || "127.0.0.1:3000"}/download/${name}/${tag}`, {
+        axios.get(`${process.env.SERVER || "http://127.0.0.1:3000"}/download/${name}/${tag}`, {
             responseType: "arraybuffer"
         }).then(res => {
             let zip = new admZip(res.data);
@@ -202,7 +202,7 @@ function deleteLocalSkillFiles(name = "HelloWorld", locale = "de_DE"){
  */
 function getRemoteSkills(locale = "de_DE") {
     return new Promise((resolve, reject) => {
-        axios.get(`http://${process.env.SERVER || "127.0.0.1:3000"}/skills/${locale}`).then(res => {
+        axios.get(`${process.env.SERVER || "http://127.0.0.1:3000"}/skills/${locale}`).then(res => {
             let skills = [];
             let installed = getInstalledSkills();
             for (let i in res.data) {
@@ -590,7 +590,7 @@ function getUpdates(locale = "de_DE"){
 
         for (let i in installed) {
             let version = getVersion(installed[i]);
-            await axios.get(`http://${process.env.SERVER || "127.0.0.1:3000"}/update/${locale}/${installed[i]}/${version}`).then(res => {
+            await axios.get(`${process.env.SERVER || "http://127.0.0.1:3000"}/update/${locale}/${installed[i]}/${version}`).then(res => {
                 if (res.data["update"]) {
                     availableUpdates[installed[i]] = res.data["version"];
                 }
