@@ -1,0 +1,21 @@
+{
+  "invocation": "Hello World",
+  "intents": [
+    {
+      "sentences": ["say ($slots/hello){hello} ($slots/world){world}"],
+      "function": "helloWorld",
+      "args": ["hello", "world"],
+      "answers": [""]
+    },
+    {
+      "sentences": ["say ($slots/hello){hello}"],
+      "function": "hello",
+      "args": ["hello"],
+      "answers": [""]
+    }
+  ],
+  "slots": {
+    "hello": ["Hello", "Good Day"],
+    "world": ["World", "Earth"]
+  }
+}

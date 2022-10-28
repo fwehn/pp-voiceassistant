@@ -1,0 +1,70 @@
+{
+  "invocation": "[die] [Heimkontrolle]",
+  "description": "Ein Skill zum steuern einfacher DIY-Smart Home Geräte.",
+  "intents": [
+    {
+      "sentences": [
+        "(schalte | um) [mein | meine | meiner | die | das | der | den] ($slots/device){device} ($slots/state){state}"
+      ],
+      "function": "changeState",
+      "args": ["device","state"],
+      "answers": [
+        "Alles Klar!",
+        "Wird gemacht!",
+        "Hier!",
+        "Ich schalte # #!"
+      ]
+    },
+    {
+      "sentences": [
+        "(schalte | um) [mein | meine | meiner | die | das | der | den] ($slots/device){device} auf (0..100){brightness} Prozent [Helligkeit] [zu schalten]",
+        "(stelle | ändere) die Helligkeit [von] [mein | meine | meiner | die | das | der | den] ($slots/device){device} auf (0..100){brightness} Prozent"
+      ],
+      "function": "changeBrightness",
+      "args": ["device","brightness"],
+      "answers": [
+        "Alles Klar. Ich ändere die Helligkeit von # auf # Prozent.",
+        "Ich hab die Helligkeit von # auf # Prozent geändert."
+      ]
+    },
+    {
+      "sentences": [
+        "stelle die Farbe [von] [mein | meine | meiner | die | das | der | den] ($slots/device){device} auf ($slots/color){color}"
+      ],
+      "function": "changeColor",
+      "args": ["device","color"],
+      "answers": ["Alles Klar. Ich ändere die Farbe von # auf #."]
+    },
+    {
+      "sentences": [
+        "um das Pattern ($slots/pattern){pattern} zu starten [bitte]",
+        "starte [bitte] [das] Pattern ($slots/pattern){pattern} [bitte]"
+      ],
+      "function": "startPattern",
+      "args": ["pattern"],
+      "answers": ["Alles Klar. Ich starte das Pattern #"]
+    },
+    {
+      "sentences": ["stoppe [bitte] [das] Pattern [bitte]"],
+      "function": "stopPattern",
+      "args": [],
+      "answers": ["Alles Klar. Ich starte das Pattern #"]
+    }
+  ],
+  "slots": {
+    "diyState": ["aus:0", "an:1", "ein:1", "_:2"],
+    "device": [
+      "Plasmidlampe:plasmidLamp",
+      "Matrix:matrix"
+    ],
+    "pattern": [
+      "Farbwechsel:ColorChange",
+      "BewegenderPunkt:MovingDot"
+    ],
+    "color": [
+      "Rot:#ff0000",
+      "Grün:#00ff00",
+      "Blau:#0000ff"
+    ]
+  }
+}

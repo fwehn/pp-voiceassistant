@@ -1,0 +1,25 @@
+{
+  "invocation": "[den] [Wetterdienst]",
+  "description": "Ein sehr einfacher Skill, der auf die Wetterdaten von openweathermap.org zugreift.\nFür die Nutzung benötigt man einen API-Key.",
+  "intents": [
+    {
+      "sentences": ["wie [ist] das Wetter (aktuell | gerade | jetzt) [ist]"],
+      "function": "getCurrentWeather",
+      "args": [],
+      "answers": ["In # ist es aktuell # bei Temperaturen von # Grad Celsius."]
+    },
+    {
+      "sentences": ["wie [wird] das Wetter in (1..4){day} Tagen [wird]"],
+      "function": "getForecastWithDayNumber",
+      "args": ["day"],
+      "answers": ["# bei Temperaturen von # bis # Grad Celsius."]
+    },
+    {
+      "sentences": ["wie [wird] das Wetter am ($slots/days){days}"],
+      "function": "getForecastWithDayName",
+      "args": ["days"],
+      "answers": ["# bei Temperaturen von # bis # Grad Celsius.", "Tut mir leid für diesen Tag liegen derzeit leider noch keine Wetterdaten vor."]
+    }
+  ],
+  "slots": {}
+}

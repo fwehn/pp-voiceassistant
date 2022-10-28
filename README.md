@@ -11,7 +11,7 @@ Eine ausführliche Dokumentation meiner Ergebnisse findet sich [hier](https://fw
 ## Installation
 
 Bei diesem Projekt handelt es sich um ein NodeJS-Projekt.  
-Um es zu installieren, muss zunächst das Repository heruntergeladen werden und im Verzeichnis ``src/sdk`` der Befehl ``spm install`` ausgeführt werden.  
+Um es zu installieren, muss zunächst das Repository heruntergeladen werden und im Verzeichnis ``src/sdk`` der Befehl ``npm install`` ausgeführt werden.  
 Danach müssen im Verzeichnis ``src/client`` die Befehle ``npm install`` und ``npm run start`` ausgeführt werden.  
 
 Eine Beschreibung der zu setzenden Umgebungsvariablen findet sich in meiner Dokumentation unter dem Punkt [Installation](https://fwehn.github.io/pp-voiceassistant/docs/installation/).

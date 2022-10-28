@@ -1,0 +1,34 @@
+{
+  "version": "1.0",
+  "dependencies": {
+    "axios": "^0.23.0"
+  },
+  "options": [
+    {
+      "name": "APIKey",
+      "type": "String",
+      "default": "Enter your API-Key here, please."
+    },
+    {
+      "name": "city",
+      "type": "Number",
+      "default": 51789
+    },
+    {
+      "name": "country",
+      "type": "String",
+      "default": "DE"
+    },
+    {
+      "name": "language",
+      "type": "String",
+      "default": "de"
+    },
+    {
+      "name": "units",
+      "type": "String",
+      "default": "metric",
+      "choices": ["standard","metric", "imperial"]
+    }
+  ]
+}

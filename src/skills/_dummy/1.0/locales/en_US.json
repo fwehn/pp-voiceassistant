@@ -1,0 +1,13 @@
+{
+  "invocation": "",
+  "description": "",
+  "intents": [
+    {
+      "sentences": [""],
+      "function": "",
+      "args": [],
+      "answers": [""]
+    }
+  ],
+  "slots": {}
+}

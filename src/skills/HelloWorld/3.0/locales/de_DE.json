@@ -1,0 +1,22 @@
+{
+  "invocation": "Hallo Welt",
+  "description": "Das ist ein ganz klassisches HelloWorld-Programm.\nBenutzte einen der unteren Sätze um es auszuprobieren.",
+  "intents": [
+    {
+      "sentences": ["sag ($slots/hello){hello} ($slots/world){world}"],
+      "function": "helloWorld",
+      "args": ["hello", "world"],
+      "answers": [""]
+    },
+    {
+      "sentences": ["sag ($slots/hello){hello}"],
+      "function": "hello",
+      "args": ["hello"],
+      "answers": [""]
+    }
+  ],
+  "slots": {
+    "hello": ["Hallo", "Guten Tag"],
+    "world": ["Welt", "Erde"]
+  }
+}
