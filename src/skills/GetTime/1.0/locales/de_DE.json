@@ -2,7 +2,12 @@
   "invocation": "[GetTime]",
   "intents": [
     {
-      "sentences": ["wie spät ist es"],
+      "sentences": [
+        "wie spät ist es",
+        "sag mir die ( Uhr | Uhrzeit | Zeit)",
+        "wie viel Uhr haben wir",
+        "was sagt die ( Uhr | Zeit)"
+      ],
       "function": "getTime",
       "args": [],
       "answers":  ["Es ist # Uhr #"]

@@ -1,0 +1,50 @@
+{
+  "invocation": "[Zigbee zu MQTT]",
+  "description": "Ein einfacher Smarthome Skill, mit dem man auf Zigbee2MQTT zugreifen kann.",
+  "intents": [
+    {
+      "sentences": [
+        "($slots/zigbee2mqtt){zigbee2mqtt} ($slots/state){state!int}",
+        "schalte [mein | meine | die | das | den] ($slots/zigbee2mqtt){zigbee2mqtt} ($slots/state){state!int}",
+        "um [mein | meine | die | das | den] ($slots/zigbee2mqtt){zigbee2mqtt} ($slots/state){state!int} zu schalten"
+      ],
+      "function": "changeLightState",
+      "args": ["zigbee2mqtt", "state"],
+      "answers": [
+        "OK",
+        "Alles Klar",
+        "Wird gemacht"
+      ]
+    },
+    {
+      "sentences": [
+        "schalte [mein | meine | die | das | den] ($slots/zigbee2mqtt){zigbee2mqtt} auf (0..100){brightness} Prozent [Helligkeit]",
+        "um [mein | meine | die | das | den] ($slots/zigbee2mqtt){zigbee2mqtt} auf (0..100){brightness} Prozent [Helligkeit] zu schalten",
+        "ändere die Helligkeit von ($slots/zigbee2mqtt){zigbee2mqtt} auf (0..100){brightness} Prozent"
+      ],
+      "function": "changeLightBrightness",
+      "args": ["zigbee2mqtt", "brightness"],
+      "answers": [
+        "OK",
+        "Alles Klar",
+        "Wird gemacht"
+      ]
+    },
+    {
+      "sentences": [
+        "ändere [bitte] die Farbe von ($slots/zigbee2mqtt){zigbee2mqtt} auf ($slots/zigbeeColor){zigbeeColor}"
+      ],
+      "function": "changeLightColor",
+      "args": ["zigbee2mqtt", "zigbeeColor"],
+      "answers": [
+        "OK",
+        "Alles Klar",
+        "Wird gemacht"
+      ]
+    }
+  ],
+  "slots": {
+    "state": ["aus:0", "an:1", "ein:1", "_:2"],
+    "zigbeeColor": ["weiß:White", "rot:Red", "grün:Green", "blau:Blue"]
+  }
+}

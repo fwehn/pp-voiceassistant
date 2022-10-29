@@ -2,22 +2,34 @@
   "invocation": "[the] [weather service]",
   "intents": [
     {
-      "sentences": ["how [is] the weather ( currently | right now) [is]"],
+      "sentences": [
+        "how is the weather ( currently | right now)",
+        "how the weather ( currently | right now) is"
+      ],
       "function": "getCurrentWeather",
       "args": [],
       "answers": ["In # it is currently # at Temperatures of # degree Fahrenheit."]
     },
     {
-      "sentences": ["how [will] the weather [will] be in (1..4){day} days"],
+      "sentences": [
+        "how will the weather be in (1..4){day} days",
+        "how the weather will be in (1..4){day} days"
+      ],
       "function": "getForecastWithDayNumber",
       "args": ["day"],
       "answers": ["# at Temperatures from # to # degree Fahrenheit."]
     },
     {
-      "sentences": ["wie [wird] das Wetter am ($slots/days){days}"],
+      "sentences": [
+        "how will the weather be on ($slots/days){days}",
+        "how the weather will be on ($slots/days){days}"
+      ],
       "function": "getForecastWithDayName",
       "args": ["days"],
-      "answers": ["# at Temperatures from # to # degree Fahrenheit.", "Im sorry there is currently no weather data for this day."]
+      "answers": [
+        "# at Temperatures from # to # degree Fahrenheit.",
+        "Im sorry there is currently no weather data for this day."
+      ]
     }
   ],
   "slots": {}

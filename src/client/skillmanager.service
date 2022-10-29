@@ -1,0 +1,15 @@
+[Unit]
+Description=Skillmanager
+After=network.target
+
+[Service]
+Environment=SERVER=https://skillserver.fwehn.de
+Environment=RHASSPY=http://127.0.0.1:12101
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/pp-voiceassistant/src/client
+ExecStart=/usr/bin/node index.js
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

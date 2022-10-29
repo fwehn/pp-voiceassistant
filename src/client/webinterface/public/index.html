@@ -14,7 +14,7 @@
                 <a :href="'/details/' + skill.name">{{ skill.name }}</a>
             </td>
             <td class="clippedText">
-                {{ skill.description }}
+                {{ removeATags(skill.description) }}
             </td>
             <td class="clippedText">
                 {{ skill.version }}
@@ -58,6 +58,9 @@
                     alert(data.message);
                     location.reload();
                 });
+            },
+            removeATags(text){
+                return text.replace(/<a.*?>/g, "").replace(/<\/a>/g, "")
             }
         }
     }).mount('#DivOverview');

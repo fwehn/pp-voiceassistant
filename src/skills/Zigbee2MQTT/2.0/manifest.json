@@ -1,0 +1,31 @@
+{
+  "version": "1.0",
+  "dependencies": {},
+  "options": [
+    {
+      "name": "Zigbee2MQTT-Topic",
+      "type": "String",
+      "default": "zigbee2mqtt"
+    },
+    {
+      "name": "White",
+      "type": "String",
+      "default": "#ffffff"
+    },
+    {
+      "name": "Red",
+      "type": "String",
+      "default": "#ff0000"
+    },
+    {
+      "name": "Green",
+      "type": "String",
+      "default": "#00ff00"
+    },
+    {
+      "name": "Blue",
+      "type": "String",
+      "default": "#0000ff"
+    }
+  ]
+}
