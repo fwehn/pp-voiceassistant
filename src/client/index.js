@@ -46,5 +46,5 @@ function updateZigbeeList(){
 
 // Starts Web-UI and CLI
 webinterface.startUI(process.env.LOCALE || "de_DE", process.env.PORT || "12102");
-cli.startCLI(process.env.LOCALE);
+cli.startCLI(process.env.LOCALE || "de_DE");
 

@@ -1,6 +1,6 @@
 {
   "invocation": "[den] [Wetterdienst]",
-  "description": "Ein sehr einfacher Skill, der auf die Wetterdaten von <a href='https://openweathermap.org/'>OpenWeather</a> zugreift.\nFür die Nutzung benötigt man einen API-Key.",
+  "description": "Ein sehr einfacher Skill, der auf die Wetterdaten von <a href='https://openweathermap.org/' target='_blank'>OpenWeather</a> zugreift.\nFür die Nutzung benötigt man einen API-Key.",
   "intents": [
     {
       "sentences": [

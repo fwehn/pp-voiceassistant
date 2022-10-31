@@ -5,6 +5,11 @@ After=network.target
 [Service]
 Environment=SERVER=https://skillserver.fwehn.de
 Environment=RHASSPY=http://127.0.0.1:12101
+Environment=PORT=12102
+Environment=MQTTHOST=127.0.0.1
+Environment=MQTTPORT=1883
+Environment=LOCALE=de_DE
+Environment=ZIGBEETOPIC=zigbee2mqtt
 Type=simple
 User=pi
 WorkingDirectory=/home/pi/pp-voiceassistant/src/client

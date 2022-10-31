@@ -117,9 +117,9 @@ function setRawTokens(rawTokenList) {
     rawTokens = rawTokenList;
 }
 
-// function to translate token value to raw token for the tts system
-function getRawToken(tokenValue) {
-    return rawTokens[tokenValue] || "Token Undefined";
+// function to translate token name to raw token for the tts system
+function getRawToken(tokenName) {
+    return rawTokens[tokenName] || "Token Undefined";
 }
 
 // internal setter for answer

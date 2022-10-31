@@ -42,7 +42,6 @@ function loadSkills(locale = "de_DE"){
     skills = skillsLocal;
 }
 
-//TODO change axios to something better :)
 //Its throwing some errors while using it with dockers internal dns
 /** Downloads a desired version of a skill as zip, unzips it and installs the required dependencies
  *
@@ -52,7 +51,7 @@ function loadSkills(locale = "de_DE"){
  */
 function downloadSkill(name = "HelloWorld", tag = "latest") {
     return new Promise((resolve, reject) => {
-        axios.get(`${process.env.SERVER || "http://127.0.0.1:3000"}/download/${name}/${tag}`, {
+        axios.get(`${process.env.SERVER || "https://skillserver.fwehn.de"}/download/${name}/${tag}`, {
             responseType: "arraybuffer"
         }).then(res => {
             let zip = new admZip(res.data);
@@ -202,7 +201,7 @@ function deleteLocalSkillFiles(name = "HelloWorld", locale = "de_DE"){
  */
 function getRemoteSkills(locale = "de_DE") {
     return new Promise((resolve, reject) => {
-        axios.get(`${process.env.SERVER || "http://127.0.0.1:3000"}/skills/${locale}`).then(res => {
+        axios.get(`${process.env.SERVER || "https://skillserver.fwehn.de"}/skills/${locale}`).then(res => {
             let skills = [];
             let installed = getInstalledSkills();
             for (let i in res.data) {
@@ -590,7 +589,7 @@ function getUpdates(locale = "de_DE"){
 
         for (let i in installed) {
             let version = getVersion(installed[i]);
-            await axios.get(`${process.env.SERVER || "http://127.0.0.1:3000"}/update/${locale}/${installed[i]}/${version}`).then(res => {
+            await axios.get(`${process.env.SERVER || "https://skillserver.fwehn.de"}/update/${locale}/${installed[i]}/${version}`).then(res => {
                 if (res.data["update"]) {
                     availableUpdates[installed[i]] = res.data["version"];
                 }
@@ -646,10 +645,8 @@ function customIntentHandler(topic, message){
         let currentSlot = formatted["slots"][i];
 
         if (currentSlot["slotName"] !== "launch"){
-            let slotValue = currentSlot["value"]["value"];
-
-            slots[currentSlot["slotName"]] = slotValue;
-            rawTokens[slotValue] = currentSlot["rawValue"];
+            slots[currentSlot["slotName"]] = currentSlot["value"]["value"];
+            rawTokens[currentSlot["slotName"]] = currentSlot["rawValue"];
         }
     }
     customSdk.setRawTokens(rawTokens);

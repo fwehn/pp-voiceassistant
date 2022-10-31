@@ -8,7 +8,7 @@ const fs = require("fs");
  * @returns {Promise<AxiosResponse<*>>} Axios response to use it for async processes
  */
 async function postToRhasspy(endpoint, body){
-    return await axios.post(`${process.env.RHASSPY || "127.0.0.1:12101"}${endpoint}`, body, {});
+    return await axios.post(`${process.env.RHASSPY || "http://127.0.0.1:12101"}${endpoint}`, body, {});
 }
 
 /** Retrains the Rhasspy model
