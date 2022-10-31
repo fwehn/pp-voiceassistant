@@ -10,10 +10,10 @@ Ich habe mich dazu entschlossen sowohl den Befehlsaufbau, als auch einige Teile 
 
 Mein Befehlsaufbau gleicht daher dem von Alexa und dem Google Assistant:  
 ``<wake word>, <launch> <Invocation name> <utterance>``  
-Bei obigen Sprachassistenten gibt es einige Variationen in der Reihenfolge, allerdings müssen die einzelnen Teile immer vorhanden sein und ein Befehl mit dem Wake Word beginnen.  
-Letzteres wird auch von Rhasspy vorausgesetzt, da der Sprachassistent nicht dauerhaft auf jeden Befehl hören soll, sondern erst, wenn er mit dem Wake Word "aufgeweckt" wird.  
-
-[//]: # (TODO reihenfolge ist immer gleich oder net?)
+Bei obigem Sprachassistenten gibt es einige Variationen in der Reihenfolge, allerdings müssen die einzelnen Teile immer vorhanden sein und ein Befehl muss mit dem Wake Word beginnen.  
+In meinem System gibt es keine Variation in der Reihenfolge.  
+Das Wake Word wird von Rhasspy vorgegeben und aktiviert die Spracherkennung.  
+Beim ``<launch>`` handelt es sich auch bei mir um einige Füllwörter, die in der [``defaults.json``](https://github.com/fwehn/pp-voiceassistant/blob/main/src/client/defaults.json) Datei definiert wurden und beim Start des Systems als Slot bei Rhasspy registriert werden.  
 
 ## Orderstruktur
 

@@ -3,10 +3,8 @@ title: SDK
 permalink: /docs/skills/sdk/
 ---
 
-[//]: # (todo add documentation for translate raw tokens)
-
 Ich habe, für die Entwicklung neuer Skills, ein eigenes SDK (**S**oftware **D**evelopment **K**it) erstellt.  
-Dieses kümmert sich, in Zusammenarbeit mit dem [Skillmanager](./../client/skillmanager.md), um nützliche Funktionen wie zum Beispiel die Sprachausgabe, oder aber den Umgang mit den [Antwortsätzen](./locales.md#answer).  
+Dieses kümmert sich, in Zusammenarbeit mit dem [Skillmanager](./../client/skillmanager.md), um nützliche Funktionen wie zum Beispiel die Sprachausgabe, oder aber den Umgang mit den [Antwortsätzen](./locales.md#answers).  
 
 ## Konfiguration und Initialisierung
 
@@ -140,17 +138,15 @@ Bei diesem Beispiel werden die beiden Strings ``hello`` und ``world`` aneinander
 
 ## Antwort generieren
 
-Entwicklerinnen und Entwickler können [Antwortsätze](./locales.md#answer) in verschiedenen Sprachen definieren.  
+Entwicklerinnen und Entwickler können [Antwortsätze](./locales.md#answers) in verschiedenen Sprachen definieren.  
 Damit diese jedoch mit einigen Werten erweitert werden können, muss ein solcher Satz generiert werden.  
 Dazu gibt man einen Satz wie zum Beispiel ``Es ist # Uhr #`` (aus [GetTime](https://github.com/fwehn/pp-voiceassistant/blob/main/src/server/skills/GetTime/1.0/src/index.js)) an.  
 Die Funktion ``generateAnswer`` ersetzt dann jeden Separator (standardmäßig ``#``) mit den Werten, die als Array übergeben werden.  
-
-[//]: # (TODO möglichkeit für mehere answers)
-[//]: # (TODO generateRandomAnswer)
+Mit der Variable ``answerIndex`` kann man deklarieren, welcher Antwortsatz ausgewählt werden soll.  
 
 ````javascript
-function generateAnswer(vars = [""], separator = "#"){
-    let parts = sessionData.answer.split(separator);
+function generateAnswer(answerIndex = 0 ,vars = [""], separator = "#"){
+    let parts = sessionData.answers[answerIndex].split(separator);
     let answer = parts[0];
     for (let i = 1; i < parts.length; i++){
         answer = answer + vars[i-1] + parts[i];
@@ -164,15 +160,25 @@ Möchte man das Zeichen ``#`` selbst benutzen, kann man einen eigenen Separator 
 Der jeweilige Satz wird vom [Skillmanager](./../client/skillmanager.md) in der jeweiligen Sprache geladen und mit der einfachen Setter-Funktion ``setAnswer`` im Objekt ``sessionData`` gespeichert.  
 Von dort wird die Antwort ausgelesen.  
 
+Für mehr Variation kann man sich einen zufälligen Satz aus der Liste der definierten Sätze auswählen und generieren lassen.  
+Dazu habe ich die Funktion ``generateRandomAnswer`` erstellt.  
+
+````javascript
+function generateRandomAnswer(vars = [""], separator = "#"){
+    let randomAnswerIndex = Math.floor(Math.random() * sessionData.answers.length);
+    return generateAnswer(randomAnswerIndex, vars, separator);
+}
+````
+*[sdk/index.js](https://github.com/fwehn/pp-voiceassistant/blob/main/src/sdk/index.js)*
+
 ### Beispiel
 
-[//]: # (todo change with index)
 ````javascript
 const customSdk = require("@fwehn/custom_sdk");
 
 function getTime(){
     let time = new Date();
-    let answer = customSdk.generateAnswer([time.getHours(), time.getMinutes()]);
+    let answer = customSdk.generateAnswer(0, [time.getHours(), time.getMinutes()]);
     customSdk.say(answer);
 }
 ````
@@ -180,6 +186,45 @@ function getTime(){
 
 Hier wird der Satz ``Es ist # Uhr #`` um die aktuelle Stunde und die aktuelle Minute erweitert, also z.B. ``Es ist 11 Uhr 34``.  
 Dieser Satz wird dann mit der ``say``-Funktion ausgegeben.
+
+## Raw-Tokens
+
+Rhasspy bietet uns die Möglichkeit, dass wenn ein Slot mit einem Namen aufgerufen wird, dieser in einen Wert übersetzt wird.  
+Wenn ich also beispielsweise frage wie das Wetter am ``Montag`` wird, kann man den Slot in Rhasspy so hinterlegen, dass statt ``Montag`` der Wert ``1`` für den ersten Tag der Woche zurückgegeben wird.  
+Das ist sehr nützlich, wenn man plant Skills in verschiedenen Sprachen um zusetzten.  
+So kann der Tag ``Montag`` im Code immer den Wert ``1`` haben, im Sprachbefehl aber mit ``Montag`` oder ``Monday`` aufgerufen werden.  
+Möchte man jedoch in der Sprachausgabe jedoch Teile der Frage aufgreifen, so wäre es hilfreich den Namen des Slots verwenden zu können.  
+  
+"Wie wird das Wetter am ``Montag``?":
+- Mit dem Wert: "Am ``1`` wird es ..."
+- Mit dem Namen: "Am ``Montag`` wird es ..."
+  
+Um dieses Problem zu umgehen, habe ich zwei einfache Funktionen erstellt: ``setRawTokens`` und ``getRawToken``  
+
+Sobald der Skillmanager einen Intent von Rhasspy erhält, werden die in diesem JavaScript-Object enthaltenen ``rawValue``-Werte mittels der ``setRawTokens``-Funktion in einer Liste gespeichert.  
+````javascript
+function setRawTokens(rawTokenList) {
+    rawTokens = rawTokenList;
+}
+````
+*[sdk/index.js](https://github.com/fwehn/pp-voiceassistant/blob/main/src/sdk/index.js)*
+
+Um diese Werte auszulesen, kann die Funktion ``getRawToken`` verwendet werden, der man dann den Namen des Slots übergibt.
+````javascript
+function getRawToken(tokenName) {
+    return rawTokens[tokenName] || "Token Undefined";
+}
+````
+*[sdk/index.js](https://github.com/fwehn/pp-voiceassistant/blob/main/src/sdk/index.js)*
+
+
+[//]: # (TODO beispiel dafür muss ggf der wetter skill angepasst werden.)
+
+### Beispiel
+
+````javascript
+
+````
 
 ## Config Variablen 
 

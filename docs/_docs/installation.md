@@ -26,8 +26,7 @@ Hat man alle benötigten Verzeichnisse heruntergeladen, muss man noch eine JSON-
 
 Damit man den Client in der eigenen individuellen Umgebung nutzen kann, gibt es einige Umgebungsvariablen:
 
-[//]: # (TODO change server to hosted instance)
-- ``SERVER``: Adresse des Skillservers (default: ``127.0.0.1:3000``)
+- ``SERVER``: Adresse des Skillservers (default: ``https://skillserver.fwehn.de``)
 - ``RHASSPY``: Adresse der Rhasspy-Instanz (default: ``http://127.0.0.1:12101``)
 - ``PORT``: Port, über den das Webinterface erreichbar sein soll (default: ``12102``)
 - ``MQTTHOST``: Adresse des MQTT-Brokers (default: ``127.0.0.1``)

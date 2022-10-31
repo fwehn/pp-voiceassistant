@@ -11,8 +11,6 @@ Es werden die benötigten Angaben und deren Funktion erklärt.
 
 Ich erkläre die Funktionen und Begriffe anhand folgenden Beispiels aus dem [HelloWorld](https://github.com/fwehn/pp-voiceassistant/blob/main/src/server/skills/HelloWorld) Skill:  
 
-[//]: # (TODO variationen in answers einbinden)
-
 ````json
 {
   "invocation": "Hallo Welt",
@@ -22,13 +20,13 @@ Ich erkläre die Funktionen und Begriffe anhand folgenden Beispiels aus dem [Hel
       "sentences": ["sag ($slots/hello){hello} ($slots/world){world}"],
       "function": "helloWorld",
       "args": ["hello", "world"],
-      "answer": ""
+      "answers": [""]
     },
     {
       "sentences": ["sag ($slots/hello){hello}"],
       "function": "hello",
       "args": ["hello"],
-      "answer": ""
+      "answers": [""]
     }
   ],
   "slots": {
@@ -66,10 +64,10 @@ Die Reihenfolge der Argumente im Satz kann sich von Sprache zu Sprache untersche
 Damit man nicht für jede Sprache eine eigene Funktion definieren muss, bei der sich lediglich die Parameter-Reihenfolge unterscheidet, gibt man unter ``args`` die gewünschte Reihenfolge an.  
 Die Namen müssen mit den Namen der Slots im ``sentences`` Punkt übereinstimmen. 
 
-### Answer
-Für einige Funktionen ist es hilfreich einen Antwortsatz zu definieren.  
-Bei diesem Satz können, mittels des [sdk](./sdk.md#antwort-generieren), Zeichen durch im Code generierte Variablen ersetzt werden.  
-Der Satz wird dann vom TTS-System ausgesprochen.
+### Answers
+Für einige Funktionen ist es hilfreich Antwortsätze zu definieren.  
+Bei diesen Sätzen können, mittels des [sdk](./sdk.md#antwort-generieren), Zeichen durch im Code generierte Variablen ersetzt werden.  
+Ein auf diese Weise generierter Satz wird dann vom TTS-System ausgesprochen.
 
 ## Slots
 Hier werden alle Slots definiert die Rhasspy nicht bereits kennt.  
