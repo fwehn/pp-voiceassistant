@@ -24,14 +24,16 @@
   docs:
     - server/skillserver
 
+- title: Skill erstellen
+  docs:
+    - create-skills/instruction
+    - create-skills/locales
+    - create-skills/sdk
+    - create-skills/manifest
+
 - title: Skills
   docs:
-    - title: Skill erstellen
-      docs:
-      - skills/instruction
-      - skills/locales
-      - skills/sdk
-      - skills/manifest
+    - skills/HelloWorld
 
 - title: Fazit
   docs:

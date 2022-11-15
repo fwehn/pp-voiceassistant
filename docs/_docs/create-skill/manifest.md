@@ -1,6 +1,6 @@
 ---
 title: Manifest
-permalink: /docs/skills/manifest/
+permalink: /docs/create-skills/manifest/
 ---
 
 Hier wird der Aufbau der ``manifest.json`` beschrieben.  

@@ -1,6 +1,6 @@
 ---
 title: Anleitung
-permalink: /docs/skills/instruction/
+permalink: /docs/create-skills/instruction/
 ---
 
 Diese Seite richtet sich in erster Linie an Entwicklerinnen und Entwickler, die einen Skill für mein System entwickeln möchten.  

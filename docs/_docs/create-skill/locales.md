@@ -1,6 +1,6 @@
 ---
 title: Locales
-permalink: /docs/skills/locales/
+permalink: /docs/create-skills/locales/
 ---
 
 Im Folgenden ist der Aufbau einer Locale-Datei, also einer Datei die zur Lokalisierung aber auch zur Definition des Aufbaus eines Befehls dient, beschrieben.  
