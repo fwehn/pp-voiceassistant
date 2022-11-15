@@ -26,10 +26,12 @@
 
 - title: Skills
   docs:
-    - skills/instruction
-    - skills/locales
-    - skills/sdk
-    - skills/manifest
+    - title: Skill erstellen
+      docs:
+      - skills/instruction
+      - skills/locales
+      - skills/sdk
+      - skills/manifest
 
 - title: Fazit
   docs:
