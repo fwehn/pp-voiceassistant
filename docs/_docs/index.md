@@ -14,6 +14,8 @@ Das System stellt neben dem [CLI](./client/cli.md) (Command Line Interface) auch
 
 ## Aufbau
 
+[//]: # (todo skills erstellen und skills erklären)
+
 Ich habe meine Dokumentation in fünf verschiedene Abschnitte aufgeteilt.  
 Das Verzeichnis links gibt die bevorzugte Reihenfolge der einzelnen Themen vor, beginnend mit den "Evaluationen".  
 In diesem Abschnitt habe ich mich mit einigen verschiedenen Systemen auseinandergesetzt, die ein modulares System für Funktionen bereitstellen.  

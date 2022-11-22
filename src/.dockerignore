@@ -1,0 +1,6 @@
+client/dotenv
+client/node_modules
+client/skills
+client/configs
+sdk/node_modules
+server

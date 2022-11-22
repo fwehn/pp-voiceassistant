@@ -3,7 +3,7 @@ title: HelloWorld
 permalink: /docs/skills/HelloWorld/
 ---
 
-Bei [HalloWorld](https://github.com/fwehn/pp-voiceassistant/tree/main/src/skills/HelloWorld) handelt es sich um einen sehr einfachen Testskill.  
+Bei HelloWorld handelt es sich um einen sehr einfachen Testskill.  
 Bei der Erstellung ging es darum, einen ersten Programmablauf des Skillmanagers zu implementieren und zu testen.  
 Wie wird ein Skill installiert?  
 Wie und wo werden die Skilldaten gespeichert?  
