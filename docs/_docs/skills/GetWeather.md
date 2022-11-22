@@ -17,3 +17,6 @@ Daher habe ich für mein System ein simples Dependency-Management-System erstell
 ``... <launch> [den] [Wetterdienst] wie wird das Wetter am Donnerstag``
 
 ## Slots
+
+
+
