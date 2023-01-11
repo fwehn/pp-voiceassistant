@@ -36,7 +36,7 @@ Erhält der Server nun eine Anfrage mit der Version ``latest``, so verwendet er 
 
 Möchte man nun einen Neuen Skill oder neue Versionen vorhandener Skills hochladen, tut man das auf die gleiche Art wie beim [Webinterface](./../client/webinterface.md#upload).  
 Auch hier muss zuvor eine ``.zip``-Datei erstelllt werden.  
-Wie das unter Windows funktioniert habe ich [hier](./../skill/instruction.md#zip-erstellen) näher beschrieben.  
+Wie das unter Windows funktioniert habe ich [hier](./../create-skill/instruction.md#zip-erstellen) näher beschrieben.  
 
 **Hinweis**: Derzeit gibt es keinerlei Überprüfungssysteme, die den Skill auf Fehler überprüfen. Man sollte also sicher sein, dass der Skill einwandfrei funktioniert.
 

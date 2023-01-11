@@ -18,16 +18,38 @@ Außerdem muss im Rhasspy-Profil der Punkt ``Intent Handling`` deaktiviert sein.
 
 Da das Projekt darauf ausgelegt war, dass das Skillsystem auf einem [Raspberry Pi](https://www.raspberrypi.com/) läuft, beschreibe ich hier die Installation auf eben diesem.  
 
-### Installation mit einem Vorkonfigurierten Image
+### Installation mit einem vorkonfigurierten Image
 
-[//]: # (TODO aussschreiben)
-- image link
-- z.B. win32disk imager mit link
-- 1880 node red
-- 1883 mosquitto
-- 12100 zigbee
-- 12101 rhasspy
-- 12102 skillsystem
+[//]: # (TODO download link einfügen)
+
+Für eine einfache und schnelle Installation habe ich eine vorkonfigurierte Image-Datei erstellt, die auf einem Raspberry Pi mit einem [ReSpeaker 4-Mic Array](https://wiki.seeedstudio.com/ReSpeaker_4_Mic_Array_for_Raspberry_Pi/) von [Seeed Studio](https://wiki.seeedstudio.com/) installiert werden kann.  
+Diese Datei kann [hier]() heruntergeladen werden.  
+Um sie zu installieren braucht man jedoch ein Programm, das Disk-Images auf eine SD-Karte schreiben kann.  
+Ich nutze dazu den [Win32 Disk Imager](https://win32diskimager.org/).  
+Nachdem die installation abgeschlossen ist.  
+Muss man die SD-Karte über den Windows Explorer aufrufen und eine Datei mit dem Namen ``wpa_supplicant.config`` erstellen, welche folgende Informationen enthält:  
+
+````
+country=DE
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+network={
+ssid="<SSID>"
+psk="<PASSWORD>"
+key_mgmt=WPA-PSK
+}
+````
+  
+``<SSID>`` und ``<PASSWORD>`` sollten dabei durch die gewünschten WiFi-Logindaten ersetzt werden.  
+
+
+Nach der Installation und dem Start des Raspberry Pi sollten folgende Dienste zur verfügung stehen:  
+
+- Port ``1880``: [Node-Red](https://nodered.org/), eine grafische Programmieroberfläche zum schnellen Testen einiger Funktionen.
+- Port ``1883``: [Eclipse Mosquitto](https://mosquitto.org/), ein MQTT-Broker, über den einzelne Dienste miteinander Kommunizieren.
+- Port ``12100``: [Zigbee2MQTT](https://www.zigbee2mqtt.io/), ein Smarthome-Dienst, mittels welchem Zigbee-Geräte per MQTT angesprochen werden können.
+- Port ``12101``: [Rhasspy](https://rhasspy.readthedocs.io/en/latest/), der Sprachassistent, der alle Befehle erkennt und diese an mein Skillsystem übergibt.
+- Port ``12102``: Mein Skillsystem, das alle ankommenden Befehle verarbeitet und die einzelnen Skills verwaltet.
 
 ### Neuinstallation auf Basis von Raspberry Pi OS
 

@@ -28,7 +28,7 @@
       "function": "getForecastWithDayName",
       "args": ["days"],
       "answers": [
-        "# bei Temperaturen von # bis # Grad Celsius.",
+        "Am # werden es Temperaturen von # bis # Grad Celsius.",
         "Tut mir leid für diesen Tag liegen derzeit leider noch keine Wetterdaten vor."
       ]
     }

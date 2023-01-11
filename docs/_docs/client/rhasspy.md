@@ -7,7 +7,7 @@ Was ist Rhasspy?
 Rhasspy ist eim Open-Source Sprachassistent.
 Es ist ein Programm, welches verschiedene Techniken, unter anderem eine WakeWord-Erkennung, eine Spracherkennung und eine Intent-Erkennung verbindet, sodass es möglich ist, aus einem gesprochenen Satz einen Befehl zu erkennen und zu verarbeiten.  
   
-Auf dieser Seite beschreibe ich einige Dinge zu Rhasspy, welche ich genutzt habe, um mein Skillsystem umzusetzen.   
+Auf dieser Seite beschreibe ich einige Dinge zu Rhasspy, welche ich genutzt habe, um mein Skillsystem umzusetzen.  
 Wie genau kommuniziert meine Anwendung mit der Rhasspy Instanz?  
 Wie betreibe ich Rhasspy eigentlich?  
 

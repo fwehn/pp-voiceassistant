@@ -54,7 +54,7 @@ Unter dem Punkt ``version`` steht ganz einfach der Tag der jeweiligen Version de
 Dieser Tag sollte mit dem Verzeichnis der jeweiligen Version übereinstimmen.   
 
 ## Abhängigkeiten
-Unter ``dependencies`` stehen alle vom Skill benötigten Abhängigkeiten.   
+Unter ``dependencies`` stehen alle vom Skill benötigten Abhängigkeiten.  
 Dabei handelt es sich bei diesen Abhängigkeiten um [npm-Dependencies](https://docs.npmjs.com/cli/v8/configuring-npm/package-json#dependencies).  
 Beim Herunterladen eines Skills, werden dann alle angegebenen Pakete automatisch installiert, sodass der Skill reibungslos funktioniert.  
 Einige dieser Pakete werden jedoch vom Skillmanager benötigt und können daher zwar genutzt, jedoch nicht überschrieben werden.  

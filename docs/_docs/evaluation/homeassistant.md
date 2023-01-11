@@ -60,10 +60,10 @@ In dieser Datei befinden sich einige Informationen über die Integration:
 - ``domain``: Eindeutig identifizierbarer Name der Integration und Name des Verzeichnisses.
 - ``name``: Anzeigename in HomeAssistant.
 - ``documentation``: Link zur Dokumentation der Integration.
-- ``dependencies``:  Abhängigkeiten von anderen 
-- ``codeowners``:  GitHub-Usernames oder Teamnamen, der Leute, die die Integration erstellt haben.
-- ``requirements``:  Python libraries, die von der Integration genutzt werden.
-- ``iot_class``:  Beschreibt die Art, mit der sich die Integration mit Geräten und Diensten verbindet.
+- ``dependencies``: Abhängigkeiten von anderen 
+- ``codeowners``: GitHub-Usernames oder Teamnamen, der Leute, die die Integration erstellt haben.
+- ``requirements``: Python libraries, die von der Integration genutzt werden.
+- ``iot_class``: Beschreibt die Art, mit der sich die Integration mit Geräten und Diensten verbindet.
 
 Es gibt noch mehr mögliche Angaben.  
 Eine ausführliche Liste gibt es [hier](https://developers.home-assistant.io/docs/creating_integration_manifest/).  

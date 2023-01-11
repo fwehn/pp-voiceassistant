@@ -27,7 +27,7 @@
       "function": "getForecastWithDayName",
       "args": ["days"],
       "answers": [
-        "# at Temperatures from # to # degree Fahrenheit.",
+        "On # the Temperatures reach from # to # degree Fahrenheit.",
         "Im sorry there is currently no weather data for this day."
       ]
     }

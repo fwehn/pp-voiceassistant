@@ -14,9 +14,7 @@ Das System stellt neben dem [CLI](./client/cli.md) (Command Line Interface) auch
 
 ## Aufbau
 
-[//]: # (todo skills erstellen und skills erklären)
-
-Ich habe meine Dokumentation in fünf verschiedene Abschnitte aufgeteilt.  
+Ich habe meine Dokumentation in sechs verschiedene Abschnitte aufgeteilt.  
 Das Verzeichnis links gibt die bevorzugte Reihenfolge der einzelnen Themen vor, beginnend mit den "Evaluationen".  
 In diesem Abschnitt habe ich mich mit einigen verschiedenen Systemen auseinandergesetzt, die ein modulares System für Funktionen bereitstellen.  
 Ich habe mir dabei die beiden Sprachassistenten Amazon Alexa und Google Assistant angeschaut und die Smarthome Anwendung Home Assistant.  
@@ -29,9 +27,13 @@ Wie funktioniert das Webinterface?
 Im Gegensatz dazu steht der Abschnitt "Server".  
 Hier beschreibe ich meine Serveranwendung, von der die Skills heruntergeladen werden können.  
 
-Der Abschnitt "Skills" wird wahrscheinlich für Entwicklerinnen und Entwickler am interessantesten sein.  
+Der Abschnitt "Skills erstellen" wird wahrscheinlich für Entwicklerinnen und Entwickler am interessantesten sein.  
 Hier erkläre ich, wie ein Skill aufgebaut ist und welche Dateien benötigt werden, damit der Skill reibungslos funktioniert.  
 Außerdem sind hier einige Erklärungen zur Funktionsweise meines SDK.  
+
+Unter "Skills" beschreibe ich die von mir erstellten Skills.  
+Wozu dienen sie?  
+Wie werden sie verwendet?  
 
 Zu guter Letzt habe ich im Abschnitt "Fazit" noch einmal zusammengefasst, worum es in meinem Projekt ging, was am Ende dabei herausgekommen ist und welche Vor- und Nachteile mein System hat.  
 Des Weiteren gebe ich einen kleinen Ausblick darüber, was in Zukunft aus dem Projekt werden könnte und was die nächsten Schritte wären.  

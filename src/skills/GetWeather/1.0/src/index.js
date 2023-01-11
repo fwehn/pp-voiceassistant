@@ -44,7 +44,7 @@ function getForecastWithDayName(dayNumber){
         }
 
         let forecastDay = data[date.toISOString().split("T")[0]];
-        answer = customSdk.generateAnswer(0, [forecastDay["avg_desc"], Math.floor(forecastDay["temp_min"]), Math.floor(forecastDay["temp_max"])]);
+        answer = customSdk.generateAnswer(0, [customSdk.getRawToken("days"), Math.floor(forecastDay["temp_min"]), Math.floor(forecastDay["temp_max"])]);
         customSdk.say(answer);
     }).catch(customSdk.fail)
 }

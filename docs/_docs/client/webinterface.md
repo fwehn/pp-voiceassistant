@@ -74,7 +74,7 @@ Hier werden die Funktionen genutzt, die ich [hier](./skillmanager.md#online) nä
 Auf dieser Seite kann man einen lokal gespeicherten Skill installieren und benutzen, ohne eine aktive Verbindung zum [Skillserver](./../server/skillserver.md) zu haben.  
 Dazu gibt man einen Namen, eine Versionsbezeichnung und die jeweilige Skill-Datei im Zip-Format an und klickt auf "Hochladen".  
 Der [Skillmanager](./skillmanager.md#offline) kümmert sich im Hintergrund dann darum, dass die Zip entpackt wird und alle Dateien am richtigen Ort platziert werden.  
-Nach dem Upload sollte der Skill dann auf der [Übersichtsseite](#bersicht) sichtbar und auswählbar sein.  
+Nach dem Upload sollte der Skill dann auf der [Übersichtsseite](#übersicht) sichtbar und auswählbar sein.  
 
 ![Upload-Page](./../../assets/img/Webinterface/uploadPage.png)  
 

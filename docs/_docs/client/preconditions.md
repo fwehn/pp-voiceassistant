@@ -23,7 +23,7 @@ Dadurch könnte man einsehen, welche Container auf dem aktuellen Host laufen (ä
 ## Base/Satellite-Setup
 
 Befindet sich Rhasspy derzeit in einem [Base/Satellite-Setup](https://rhasspy.readthedocs.io/en/latest/tutorials/#server-with-satellites)?  
-Ist das der Fall so ist es etwas schwieriger zu überprüfen, ob  Displays o.ä. angeschlossen sind.  
+Ist das der Fall so ist es etwas schwieriger zu überprüfen, ob Displays o.ä. angeschlossen sind.  
 Mit folgendem API-Call kann man sich das Profil von Rhasspy anzeigen lassen:  
 ```http request
 http://<rhasspy-ip>:12101/api/profile
@@ -34,5 +34,5 @@ Daraus kann man dann ableiten, ob es sich um ein Base/Satellite-Setup handelt.
 
 Wie [hier](./../evaluation/homeassistant.md#manifest) beschrieben, gibt es beim Home Assistant einen Punkt "Dependencies" in der ``manifest.json``.  
 Dieser Punkt beschreibt Abhängigkeiten zu anderen Integrations.  
-Das wäre eine Möglichkeit, wie Entwicklerinnen und Entwickler redundante Arbeit vermeiden könnten, indem sie Funktionen anderer Skills nutzen.    
+Das wäre eine Möglichkeit, wie Entwicklerinnen und Entwickler redundante Arbeit vermeiden könnten, indem sie Funktionen anderer Skills nutzen.  
 Bisher gibt es jedoch keine Möglichkeit, dass Skills untereinander Kommunizieren.  

@@ -76,7 +76,7 @@ async function init() {
 ````
 *[sdk/index.js](https://github.com/fwehn/pp-voiceassistant/blob/main/src/sdk/index.js)*
 
-Zwei der Topics dienen dazu, eine Liste aller Geräte und Gruppen von Zigbee2MQTT auszulesen und alle Änderungen mitzubekommen.   
+Zwei der Topics dienen dazu, eine Liste aller Geräte und Gruppen von Zigbee2MQTT auszulesen und alle Änderungen mitzubekommen.  
 Diese Liste wird dann als Slot mit dem Namen "zigbee2mqtt" an Rhasspy gesendet, damit die Spracherkennung die Wörter erkennen kann.  
   
 Das dritte Topic dient dazu alle eingehenden Intents von Rhasspy aufzufangen.  
@@ -218,13 +218,22 @@ function getRawToken(tokenName) {
 *[sdk/index.js](https://github.com/fwehn/pp-voiceassistant/blob/main/src/sdk/index.js)*
 
 
-[//]: # (TODO beispiel dafür muss ggf der wetter skill angepasst werden.)
-
 ### Beispiel
 
-````javascript
+In folgendem Beispiel wird der Raw-Token des Slots ``days`` ausgelesen und in der Variable ``dayName`` gespeichert.  
+Dadurch kann der Name des Tages in der Antwort verwendet werden:  
 
+"... wie wird das Wetter am ``Mittwoch``?" → "Am ``Mittwoch`` werden es Temperaturen von ..."
+
+````javascript
+let forecastDay = data[date.toISOString().split("T")[0]];
+let dayName = customSdk.getRawToken("days");
+answer = customSdk.generateAnswer(0, [dayName, Math.floor(forecastDay["temp_min"]), Math.floor(forecastDay["temp_max"])]);
+customSdk.say(answer);
 ````
+*[GetWeather](https://github.com/fwehn/pp-voiceassistant/blob/main/src/server/skills/GetWeather/1.0/src/index.js)*
+
+
 
 ## Config Variablen 
 

@@ -19,9 +19,9 @@ Beim ``<launch>`` handelt es sich auch bei mir um einige Füllwörter, die in de
 
 Ein Großteil meines Systems ähnelt dem System von Amazon.  
 So teile auch ich die verschiedenen Sprachen in einzelne Dateien mit der jeweiligen ``locale``-Bezeichnung auf (z.B. ``de_DE.json`` für Deutsch).  
-Diese Dateien befinden sich in dem Verzeichnis ``<SkillName>/<SkillVersion>/locales``.   
+Diese Dateien befinden sich in dem Verzeichnis ``<SkillName>/<SkillVersion>/locales``.  
 Im verzeichnis ``<SkillName>/<SkillVersion>/src`` befindet sich mein Code, welcher in JavaScript geschrieben ist, da mir diese Sprache liegt und ich in der Vergangenheit auch schon andere Projekte mit NodeJS realisiert habe.  
-Wie alle anderen Systeme auch, stelle ich ein sdk zur verfügung, welches sich in erster Linie um die kommunikation mit dem MQTT-Broker kümmert, aber auch einige Funktionen meines eigenen Systems bietet (mehr dazu [hier](./../skill/sdk.md)).  
+Wie alle anderen Systeme auch, stelle ich ein sdk zur verfügung, welches sich in erster Linie um die kommunikation mit dem MQTT-Broker kümmert, aber auch einige Funktionen meines eigenen Systems bietet (mehr dazu [hier](./../create-skill/sdk.md)).  
 Für einige Metadaten und Abhängigkeiten habe ich mich dazu entschlossen, eine ``manifest.json`` ähnlich der des Home Assistant vorauszusetzen.  
 In dieser Datei befinden sich Angaben zum Skill, der Abhängigkeiten zu anderen "npm-packages" und Angaben zu vom Nutzer änderbaren Optionen.  
 

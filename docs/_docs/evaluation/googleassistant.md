@@ -8,7 +8,7 @@ Actions können auf viele verschiedene Arten erstellt und verwendet werden.
 Ich habe mich hier auf die Variante über die Actions Console und das Actions-SDK beschränkt.  
 Allerdings sind mit dieser Variante die Möglichkeiten sehr eingeschränkt und eher auf eine einfache Konversation ausgelegt.  
 Für mehr Funktionen gibt es wesentlich bessere Möglichkeiten eine Action zu erstellen (z.B. Über [DialogFlow](https://dialogflow.cloud.google.com/#/getStarted) und [Cloud Functions or Firebase](https://firebase.google.com/docs/functions)).  
-Allerdings lässt sich der Aufbau der Dateien nicht erkennen und ist somit nicht hilfreich, wenn ich versuche eine eigene Ordnerstruktur zu erstellen.
+Allerdings lässt sich bei Diesen der Aufbau der Dateien nicht erkennen und sind somit nicht hilfreich, wenn ich versuche eine eigene Ordnerstruktur zu erstellen.
 
 ## Befehlsstruktur
 
@@ -16,8 +16,9 @@ Bei Google Actions gibt es keine "richtige" Befehlsstruktur, vielmehr verschiede
 Google nutzt nämlich eine NLU-Technik (**N**atural **L**anguage **U**nderstanding), um aus einem Set aus Sätzen ein KI-Modell zu generieren.  
 Anhand dieses Modells kann der Google Assistant dann ermitteln, um welche Action es sich handelt.  
 
-[//]: # (TODO beispiel weiter erklären)
 ### Beispiel
+
+Um das KI-Modell zu trainieren, muss man verschiedene [Trainingssätze](https://cloud.google.com/dialogflow/es/docs/intents-training-phrases?hl=en) generieren:  
 
 - "I like red"
 - "My favorite color is yellow"
@@ -25,10 +26,11 @@ Anhand dieses Modells kann der Google Assistant dann ermitteln, um welche Action
 - "Blue is my favorite"
 - ...
 
-
-"OK Google, green, that's my favorite color"
-
-[Source](https://cloud.google.com/dialogflow/es/docs/intents-training-phrases?hl=en)
+Google versucht mittels eines eigenen vortrainierten KI-Modell, alle Slots aus den Trainingssätzen herauszufiltern.  
+Für komplexere Slots kann man jedoch über die [Actions Console](#actions-console) die einzelnen Werte (wie zum Beispiel ``black`` oder ``Blue``) markieren und annotieren.  
+Hat man die benötigte Menge an Trainingssätzen erstellt und vorbereitet, kann ein Befehl wie folgt aussehen:  
+  
+"OK Google, green, that's my favorite color."
 
 
 ## Ordnerstruktur 
@@ -112,7 +114,7 @@ transitionToScene: global_intent_scene
 ### Szenen
 
 Eine Szene kann durch einen erkannten Intent gestartet werden.  
-Befindet sich der Google Assistant in einer Szene, werden einige Aktionen ausgeführt bis die Szene abgeschlossen und die Nutzerin oder der Nutzer das gewünschte Ergebnis erhält.  
+Befindet sich der Google Assistant in einer Szene, werden einige Aktionen ausgeführt, bis die Szene abgeschlossen ist und die Nutzerin oder der Nutzer das gewünschte Ergebnis erhält.  
 
 Über Szenen werden fehlende Slots abgefragt und Sprachausgaben in einer Warteschlange abgelegt.  
 Sind alle benötigten Angaben vorhanden und die Warteschlange abgearbeitet, wird der eingehende Intent behandelt.  
@@ -165,7 +167,7 @@ Durch obiges Beispiel werden zwei Slots mit den Namen ``boba`` und ``matcha`` un
 ### Webhooks
 
 Damit sich die Funktionen einer Action nicht nur auf simple Sprachausgaben beschränken, kann man unter dem Verzeichnis ``<Action-Verzeichnis>/webhooks/`` Code definieren, der ausgeführt wird, sobald ein solcher Prozess von einer Szene angestoßen wird.  
-Dabei handelt es sich um JavaScript-Code, welcher mittels einiger Google-eigener Funktionen auf diese Webhooks "hört".  
+Dabei handelt es sich um JavaScript-Code, welcher mittels Google-eigener Funktionen auf diese Webhooks "hört".  
 
 Um einen Webhook zu definieren, benötigt man eine Datei Namens ``ActionsOnGoogleFulfillment.yaml``:   
 
@@ -179,7 +181,7 @@ inlineCloudFunction:
 ````
 *Auszug aus der offiziellen [Dokumentation](https://developers.google.com/assistant/conversational/webhooks?tool=sdk#development_options)*
 
-Der eigentliche Code befindet sich dann unter dem Verzeichnis ``<Action-Verzeichnis>/webhooks/ActionsOnGoogleFulfillment``.    
+Der eigentliche Code befindet sich dann unter dem Verzeichnis ``<Action-Verzeichnis>/webhooks/ActionsOnGoogleFulfillment``.  
 Dazu legt man die beiden - für NodeJS typischen - Dateien ``index.js`` und ``package.json`` an:  
 
 ````javascript
@@ -222,9 +224,9 @@ Google Actions nutzen einige [Firebase](https://firebase.google.com/)-Ressourcen
 
 ## Actions Console
 
-Bei Actions Console handelt es sich um eine UI-basierte IDE, welche sofort über einen Browser abrufbar ist.  
+Bei Actions Console handelt es sich um eine UI-basierte IDE, welche direkt über einen Browser abrufbar ist.  
 Hier kann man dann neue Projekte erstellen.  
-Dazu kann man zu Beginn eine Kategorie und somit ein vorgefertigtes Template auswählen, wodurch eine einfache Action mit einigen Intents und Sätzen angelegt wird.     
+Dazu kann man zu Beginn eine Kategorie und somit ein vorgefertigtes Template auswählen, wodurch eine einfache Action mit einigen Intents und Sätzen angelegt wird.  
 Man hat jedoch auch die Möglichkeit ein leeres Projekt anzulegen, wenn keine der Kategorien auf die eigene Anwendung passt.  
 Wenn man die Actions-Console nutzen möchte, braucht man sich um die Ordnerstruktur keine Gedanken zu machen, da alle Dateien von der IDE angelegt werden und man beim Erstellen der Skills und Slots stark an die Hand genommen wird.  
 
@@ -235,7 +237,7 @@ Wenn man die Actions-Console nutzen möchte, braucht man sich um die Ordnerstruk
 ## Deprecated
 
 Google plant zum 13. Juni 2023 die [Conversational Actions](https://developers.google.com/assistant/conversational/overview) und zum 13. September 2023 die [Actions Console Analytics](https://developers.google.com/assistant/console/analytics) abzuschalten.  
-Diese gelten daher bereits jetzt als "deprecated" (eng. für "veraltet").
+Diese gelten daher bereits jetzt als "deprecated".
 
 ## Quellen
 

@@ -1,4 +1,4 @@
-../skills
+./skills
 dotenv
 node_modules
 configs
