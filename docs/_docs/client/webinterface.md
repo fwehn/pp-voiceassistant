@@ -16,11 +16,11 @@ Außerdem kann man den jeweiligen Skill hier löschen.
 *Bild der Übersicht-Seite*
 
 ## Details
-Auf dieser Seite befinden sich alle Informationen und Details die für den Endnutzer wichtig sind.  
+Auf dieser Seite befinden sich alle Informationen und Details, die für die Endnutzerinnen und Endnutzer wichtig sind.  
 Man erhält eine kleine Beschreibung des Skills und einige Sätze, die man verwenden kann, um den Skill zu benutzen.  
 Außerdem kann man hier einige benötigte Optionen angeben.  
 Am Beispiel des GetWeather-Skills wären das unter anderem die **Stadt** oder der **API-Key**.  
-Ein Entwickler kann diese Optionen in der ``manifest.json`` angeben, gespeichert werden sie dann in der ``skillConfigs.json``.  
+Entwicklerinnen und Entwickler können diese Optionen in der ``manifest.json`` angeben, gespeichert werden sie dann in der ``skillConfigs.json``.  
 
 ![Details-Page](./../../assets/img/Webinterface/detailsPage-GetWeather.png)  
 *Bild der Details-Seite*
@@ -57,7 +57,7 @@ Ein Entwickler kann diese Optionen in der ``manifest.json`` angeben, gespeichert
   ]
 }
 ```  
-*[GetWeather/manifest.json](https://github.com/fwehn/pp-voiceassistant/blob/main/src/server/skills/GetWeather/1.0/manifest.json)*
+*[GetWeather/manifest.json](https://github.com/fwehn/pp-voiceassistant/blob/main/src/skills/GetWeather/1.0/manifest.json)*
 
 Zu guter Letzt kann man auf dieser Seite den jeweiligen Skill [aktivieren und deaktivieren](./skillmanager.md#skills-aktivieren).  
 Das sorgt dafür, dass die Intents und Slots bei Rhasspy registriert werden und der Skill dadurch nutzbar gemacht wird.
@@ -83,7 +83,7 @@ Das Webinterface wird von einem ExpressJS-Server bereitgestellt, welcher die [Ja
 Auf den HTML-Seiten selbst wird jeweils [VueJS](https://v3.vuejs.org/guide/introduction.html#what-is-vue-js) per [UNPKG-Link](https://unpkg.com/) eingebunden, um die durch Jade übertragenen Daten einfacher darzustellen.  
 
 ## Port
-Ich habe mir die Frage gestellt, welchen Port man für das Webinterface benutzen könnte.
+Ich habe mir die Frage gestellt, welchen Port man für das Webinterface benutzen könnte.  
 Der Port sollte leicht zu merken sein.  
 Dafür bietet sich ein Port an, der aus wiederkehrenden Zahlen besteht, wie z.B. 11111 oder 8080 (im Gegensatz zu 19294).  
 Mögliche Ports die ich mir überlegt habe:

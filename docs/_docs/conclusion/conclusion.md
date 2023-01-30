@@ -9,7 +9,7 @@ Aber auch zu Vor- und Nachteilen meiner Lösung.
 ## Was war das Ziel des Projekts?
 
 In meinem Projekt sollte ich ein "Skillsystem" für den OpenSource-Sprachassistenten [Rhasspy](https://rhasspy.readthedocs.io/en/latest/) entwickeln.  
-Also ein System, mit dem Nutzerinnen und Nutzer einfach neue Funktionen installieren können und Entwicklerinnen und Entwickler anhand eines standardisierten Systems neue Features entwickeln können.  
+Also ein System, mit dem Nutzerinnen und Nutzer möglichst einfach neue Funktionen installieren können und Entwicklerinnen und Entwickler anhand eines standardisierten Systems neue Features entwickeln können.  
 Dazu musste ich zum einen eine Anwendung entwickeln, welche sich um das Verwalten der einzelnen Skills kümmert, aber auch die Struktur der jeweiligen Skills festlegen.  
 Dazu habe ich mir einige kommerzielle Lösungen (wie Amazons Alexa und den Google Assistant) und deren Aufbau angeschaut und evaluiert.  
 

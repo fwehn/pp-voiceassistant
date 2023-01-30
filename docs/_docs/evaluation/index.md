@@ -16,7 +16,9 @@ Alle drei bieten einen etwas anderen Ansatz und Aufbau.
 Amazon Alexa und Google Assistant sind zwei der weit verbreitetsten Sprachassistenten überhaupt.  
 Es lag also recht nahe, mir diese beiden Systeme anzuschauen.
 Beide bieten einen komplett anderen Grundaufbau und setzten auf eine ganz andere Herangehensweise, wie die einzelnen Funktionen zu erstellen sind.  
-Bei Alexa ist es sehr Code basiert, wohingegen beim Google Assistant alles eher Dialog basiert ist, indem man Fragen, Antworten und Reaktionen definiert und in Abhängigkeit zueinander setzt.  
+
+[//]: # (todo ersetzten durch sowas wie )
+[//]: # (Bei Alexa ist es sehr Code basiert, wohingegen beim Google Assistant alles eher Dialog basiert ist, indem man Fragen, Antworten und Reaktionen definiert und in Abhängigkeit zueinander setzt.  )
 Allerdings bieten beide auch die Möglichkeit, mittels Webhooks eine Kommunikation zu externen Servern aufzubauen.  
 Dadurch gibt es kaum Beschränkungen in der komplexität dieser Funktionen.  
 

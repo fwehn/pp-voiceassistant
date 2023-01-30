@@ -5,14 +5,15 @@ permalink: /docs/client/preconditions/
 
 Manche Skills brauchen andere Programme oder Vorbedingungen um zu funktionieren.  
 Doch wie findet man individuell für ein Gerät heraus, ob diese Vorbedingungen erfüllt sind?  
+In diesem Abschnitt habe ich einige Überlegungen dazu angestellt.  
 
 
 ## Zigbee2MQTT
 
 [Zigbee2MQTT](https://zigbee2mqtt.io) ist ein sehr gutes Tool, um die Möglichkeiten eines Sprachassistenten zu erweitern, indem man mittels eines Zigbee-Sticks mit verschiedensten [Zigbee-Geräten](https://www.zigbee2mqtt.io/supported-devices/) kommuniziert.  
-Möchte man nun einen Skill installieren, welcher zum Beispiel verschiedene Lampen steuern soll, so sollte es für den Endnutzer ersichtlich sein, ob Zigbee2MQTT installiert ist oder nicht.  
+Möchte man nun einen Skill installieren, welcher zum Beispiel verschiedene Lampen steuern soll, so sollte es für Endnutzerinnen und Endnutzer ersichtlich sein, ob Zigbee2MQTT installiert ist oder nicht.  
 Um das zu überprüfen, könnte man zum Beispiel auf verschiedene Zigbee2MQTT Topics "hören".  
-Es kann allerdings auch sein, dass der Benutzer das "Base-Topic" bei der Konfiguration umbenannt hat.
+Es kann allerdings auch sein, dass das "Base-Topic" bei der Konfiguration umbenannt wurde.
 
 [//]: # (## LCD)
 

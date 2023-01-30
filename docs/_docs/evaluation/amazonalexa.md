@@ -15,6 +15,7 @@ Ich beschränke mich hier auf [Alexa Hosted Skills](https://developer.amazon.com
 
 Ein Befehl bei Alexa ist wie folgt aufgebaut:  
 ``<wake word>, <launch> <Invocation name> <utterance>``  
+  
 Was die einzelnen Teile des Befehls bedeuten, habe ich [hier](./../create-skill/instruction.md#aufbau-eines-befehls) etwas ausführlicher beschrieben.  
 Die einzelnen Teile eines Befehls können auch in anderer Reihenfolge auftreten, sodass der Invocation Name nach der Utterance kommt.  
 Amazon stellt dazu einige Füllwörter bereit, welche genutzt werden können, um einen natürlich klingenden Satz zu bilden.  

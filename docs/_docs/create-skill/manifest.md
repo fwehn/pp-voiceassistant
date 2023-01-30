@@ -9,7 +9,7 @@ Welche Angaben müssen vorhanden sein?
 Wie kann ich Optionen definieren und welche Typen stehen dafür bereit?  
 
 ## Beispiel
-Ich werde die einzelnen Angaben an folgendem Beispiel aus dem [GetWeather](https://github.com/fwehn/pp-voiceassistant/tree/main/src/server/skills/GetWeather) Skill erklären:   
+Ich werde die einzelnen Angaben an folgendem Beispiel aus dem [GetWeather](https://github.com/fwehn/pp-voiceassistant/tree/main/src/skills/GetWeather) Skill erklären:   
 
 ````json
 {
@@ -47,7 +47,7 @@ Ich werde die einzelnen Angaben an folgendem Beispiel aus dem [GetWeather](https
   ]
 }
 ````
-*[skills/GetWeather](https://github.com/fwehn/pp-voiceassistant/blob/main/src/server/skills/GetWeather/1.0/manifest.json)*
+*[skills/GetWeather](https://github.com/fwehn/pp-voiceassistant/blob/main/src/skills/GetWeather/1.0/manifest.json)*
 
 ## Version
 Unter dem Punkt ``version`` steht ganz einfach der Tag der jeweiligen Version des Skills.  

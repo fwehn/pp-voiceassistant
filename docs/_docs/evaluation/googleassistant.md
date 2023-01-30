@@ -5,9 +5,9 @@ permalink: /docs/evaluation/google-assistant/
 
 Beim Google Assistant heißen die Funktionen Actions.  
 Actions können auf viele verschiedene Arten erstellt und verwendet werden.  
-Ich habe mich hier auf die Variante über die Actions Console und das Actions-SDK beschränkt.  
+Ich habe mich hier auf die Variante mittels des Actions-SDK beschränkt.  
 Allerdings sind mit dieser Variante die Möglichkeiten sehr eingeschränkt und eher auf eine einfache Konversation ausgelegt.  
-Für mehr Funktionen gibt es wesentlich bessere Möglichkeiten eine Action zu erstellen (z.B. Über [DialogFlow](https://dialogflow.cloud.google.com/#/getStarted) und [Cloud Functions or Firebase](https://firebase.google.com/docs/functions)).  
+Für komplexere Actions sollte man die Action jedoch mittels [DialogFlow](https://dialogflow.cloud.google.com/#/getStarted) oder [Cloud Functions or Firebase](https://firebase.google.com/docs/functions) erstellen, da diese für umfangreichere Funktionen ausgelegt sind.  
 Allerdings lässt sich bei Diesen der Aufbau der Dateien nicht erkennen und sind somit nicht hilfreich, wenn ich versuche eine eigene Ordnerstruktur zu erstellen.
 
 ## Befehlsstruktur
@@ -71,20 +71,6 @@ Die von mir beschriebenen Verzeichnisse:
     └── Fulfillment/  ->  Unter diesem Verzeichnis befindet sich der tatsächliche Code, der von der Action ausgeführt wird
 ````
 
-[//]: # (- ``actions/actions.yaml``: Startpunkt einer Action)
-
-[//]: # (- ``custom``:)
-
-[//]: # (  - ``global``: Wenn ein Intent zu jedem Zeitpunkt einer Konversation erkannt werden soll, definiert man das unter diesem Verzeichnis)
-
-[//]: # (  - ``intents``: Hier können dann die eigenen Intents definiert werden)
-
-[//]: # (  - ``scenes``: Szenen legen eine Art Pfad fest, der abhängig von erkannten Intents "abgelaufen" wird)
-
-[//]: # (  - ``types``: Hier werden Slots definiert)
-
-[//]: # (- ``webhooks``: Unter diesem Verzeichnis befindet sich der tatsächliche Code, der von der Action ausgeführt wird)
-
 Die Erstellung und der Aufbau der einzelnen Actions weichen stark von der, der [Skills (Amazon Alexa)](./amazonalexa.md) ab.
 
 ### Intents
@@ -101,7 +87,7 @@ trainingPhrases:
 ````
 *Auszug aus der offiziellen [Dokumentation](https://developers.google.com/assistant/conversational/build/deep-link-invocations?tool=sdk#create_deep_link_invocations)*
 
-Damit der Google Assistant weiß, wie er mit diesem Intent umzugehen hat, legt man eine zweite Datei mit gleichem Namen unter dem Verzeichnis ``<Action-Verzeichnis>/custom/global/`` an.  
+Wenn der Intent zu jeder Zeit verfügbar sein soll, legt man eine zweite Datei mit gleichem Namen unter dem Verzeichnis ``<Action-Verzeichnis>/custom/global/`` an.  
 Hier wird definiert, was nach der Erkennung des Intents passieren soll.  
 In folgendem Beispiel soll einfach eine Szene gestartet werden:  
 

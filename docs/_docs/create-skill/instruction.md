@@ -17,13 +17,13 @@ Daher sieht der Aufbau der Befehle wie folgt aus:
 
 - ``wake word``: Das Wake Word ist das Wort, mit welchem man den Sprachassistenten "aufwecken" kann. Dieses wird von Rhasspy vorausgesetzt.
 - ``launch``: Hierbei handelt es sich um eine Sammlung an Füllwörtern, welche in der [``defaults.json``](https://github.com/fwehn/pp-voiceassistant/blob/main/src/client/defaults.json) definiert wurden.
-- ``invocation``: Das ist der Name, mit dem man den Skill auswählt, z.B. ``Hallo Welt`` für [HelloWorld](https://github.com/fwehn/pp-voiceassistant/blob/main/src/server/skills/HelloWorld/1.0/src/index.js).
+- ``invocation``: Das ist der Name, mit dem man den Skill auswählt, z.B. ``Hallo Welt`` für [HelloWorld](https://github.com/fwehn/pp-voiceassistant/blob/main/src/skills/HelloWorld/1.0/src/index.js).
 - ``utterance``: Utterance ist der Unterbefehl, welcher die einzelnen Funktionen eines Skills darstellt.
 
 
 ## Ordner anlegen
 
-Ich habe mich für folgende Ordnerstruktur (am Beispiel des [HelloWorld](https://github.com/fwehn/pp-voiceassistant/blob/main/src/server/skills/HelloWorld/1.0/src/index.js) Skills) entschieden.  
+Ich habe mich für folgende Ordnerstruktur (am Beispiel des [HelloWorld](https://github.com/fwehn/pp-voiceassistant/blob/main/src/skills/HelloWorld/1.0/src/index.js) Skills) entschieden.  
 Diese ähnelt sehr stark der Struktur von Amazon.
 
 ```
@@ -62,7 +62,7 @@ Dazu wird eine Datei mit dem Namen ``index.js`` benötigt.
 Ich habe ein [SDK](https://github.com/fwehn/pp-voiceassistant/tree/main/src/sdk) erstellt welches die Kommunikation zwischen Skill und Rhasspy übernimmt.  
 Wie man dieses SDK benutzt habe ich [hier](./sdk.md) näher beschrieben.
 
-Um die Erstellung neuer Skills zu vereinfachen, habe ich einen [Dummy](https://github.com/fwehn/pp-voiceassistant/tree/main/src/server/skills/_dummy) erstellt, aus dem man leicht einen neuen Skill anlegen kann.  
+Um die Erstellung neuer Skills zu vereinfachen, habe ich einen [Dummy](https://github.com/fwehn/pp-voiceassistant/tree/main/src/skills/_dummy) erstellt, aus dem man leicht einen neuen Skill anlegen kann.  
 
 ## Zip erstellen
 Um möglichst einfach den SKill zu testen, muss man eine Zip-Datei erstellen.  

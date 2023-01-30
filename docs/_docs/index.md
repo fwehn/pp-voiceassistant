@@ -8,7 +8,7 @@ In diesem Praxisprojekt geht es darum, für die Opensource-Lösung Rhasspy ein m
 Das System soll einer vereinfachten Version von [Amazons Skills-System](https://www.amazon.de/b?ie=UTF8&node=10068460031) ähneln.  
 Dazu soll eine Anwendung lokal auf dem Rhasspy-Host laufen, welche dann wiederum mittels eines Skillservers oder durch lokale Installation, neue Funktionen für den Sprachassistenten zur Verfügung stellt.  
 Für etwaige Entwicklerinnen und Entwickler soll es möglichst leicht sein, neue Skills zu entwickeln und zu testen.  
-Dazu stelle ich ein SDK (Software Development Kit) zur Verfügung, welches einige nützliche Funktionen enthält, welche die Entwicklerinnen und Entwickler nutzen können (wie z.B. eine Funktion für die Sprachausgabe).  
+Dazu stelle ich ein [SDK](./create-skill/sdk.md) (Software Development Kit) zur Verfügung, welches einige nützliche Funktionen enthält, die von Entwicklerinnen und Entwicklern genutzt werden können (wie z.B. eine Funktion für die Sprachausgabe).  
 Das System stellt neben dem [CLI](./client/cli.md) (Command Line Interface) auch ein [Webinterface](./client/webinterface.md) zur Verfügung, um möglichst leicht neue Skills zu finden, zu installieren und zu verwalten.  
 
 
@@ -27,7 +27,7 @@ Wie funktioniert das Webinterface?
 Im Gegensatz dazu steht der Abschnitt "Server".  
 Hier beschreibe ich meine Serveranwendung, von der die Skills heruntergeladen werden können.  
 
-Der Abschnitt "Skills erstellen" wird wahrscheinlich für Entwicklerinnen und Entwickler am interessantesten sein.  
+Der Abschnitt "Skill erstellen" wird wahrscheinlich für Entwicklerinnen und Entwickler am interessantesten sein.  
 Hier erkläre ich, wie ein Skill aufgebaut ist und welche Dateien benötigt werden, damit der Skill reibungslos funktioniert.  
 Außerdem sind hier einige Erklärungen zur Funktionsweise meines SDK.  
 
@@ -41,14 +41,14 @@ Des Weiteren gebe ich einen kleinen Ausblick darüber, was in Zukunft aus dem Pr
 ## Begriffe
 
 Ich werde in dieser Dokumentation einige Begriffe Verwenden, die so auch bei den Systemen von Amazon und Google verwendet werden.  
-Daher habe ich hier eine Art Mini-Glossar, in dem ich einmal diese Begriffe erkläre.
+Daher habe ich hier eine Art Mini-Glossar erstellt, in dem ich einmal diese Begriffe erkläre.
 
 ### Skills
 
 Mit einem Skill bezeichne ich eine Funktion oder ein Feature, welches eigenständig installiert werden kann.  
 Bei meinem Projekt handelt es sich um ein Skillsystem, also einer Anwendung, mit der man jene Skills/Funktionen herunterladen kann.  
 Ein solcher Skill kann alles Mögliche sein, beispielsweise ein Wetterdienst oder ein Wecker.  
-Der Name stammt von Amazon Alexa und ich habe mich dazu entschlossen diesen zu übernehmen, da ich ihn sehr passend finde.  
+Den Namen habe ich von Amazon Alexa übernommen, da ich ihn sehr passend und intuitiv finde.  
 Bei Google nennen sich diese Funktionen "Actions".  
 
 ### Intents

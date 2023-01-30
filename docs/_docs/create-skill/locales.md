@@ -9,7 +9,7 @@ Es werden die benötigten Angaben und deren Funktion erklärt.
 
 ## Beispiel
 
-Ich erkläre die Funktionen und Begriffe anhand folgenden Beispiels aus dem [HelloWorld](https://github.com/fwehn/pp-voiceassistant/blob/main/src/server/skills/HelloWorld) Skill:  
+Ich erkläre die Funktionen und Begriffe anhand folgenden Beispiels aus dem [HelloWorld](https://github.com/fwehn/pp-voiceassistant/blob/main/src/skills/HelloWorld) Skill:  
 
 ````json
 {
@@ -35,13 +35,13 @@ Ich erkläre die Funktionen und Begriffe anhand folgenden Beispiels aus dem [Hel
   }
 }
 ````
-*Aus [HelloWorld/de_DE.json](https://github.com/fwehn/pp-voiceassistant/blob/main/src/server/skills/HelloWorld/1.0/locales/de_DE.json)*
+*Aus [HelloWorld/de_DE.json](https://github.com/fwehn/pp-voiceassistant/blob/main/src/skills/HelloWorld/1.0/locales/de_DE.json)*
 
 ## Invocation
 Dieser Punkt bezeichnet den Namen des Befehls, unter dem man den Skill ansprechen kann.  
 Hier ist das "Hallo Welt".  
 Man kann auch Invocation Names übersetzten.  
-In der [``en_US.json``](https://github.com/fwehn/pp-voiceassistant/blob/main/src/server/skills/HelloWorld/1.0/locales/en_US.json) ist dieser Name zum Beispiel als "Hello World" definiert.  
+In der [``en_US.json``](https://github.com/fwehn/pp-voiceassistant/blob/main/src/skills/HelloWorld/1.0/locales/en_US.json) ist dieser Name zum Beispiel als "Hello World" definiert.  
 Üblicherweise wird der Invocation Name dazu genutzt, einen Skill eindeutig zu identifizieren.  
 Wenn man also zwei verschiedene Skills für die Wetterinformationen hat, kann man einen beispielsweise mit "OpenWeather" und den anderen mit "Deutscher Wetterdienst" aufrufen.  
 

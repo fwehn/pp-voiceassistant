@@ -3,7 +3,7 @@ title: Skillserver
 permalink: /docs/server/skillserver/
 ---
 
-Damit es leichter ist neue Skills zu installieren habe ich eine Server-Anwendung entwickelt, auf die der [Skillmanager](./../client/skillmanager.md) zugreifen kann.  
+Damit es leichter ist, neue Skills zu installieren habe ich eine Server-Anwendung entwickelt, auf die der [Skillmanager](./../client/skillmanager.md) zugreifen kann.  
 Diese Anwendung ist komplett optional, da man auch lokal neue Skills installieren kann (zum Beispiel über das [Webinterface](./../client/webinterface.md#upload)).
 
 ## Fileserver
@@ -29,8 +29,8 @@ Zweitens aus einer Datei mit dem Namen ``versions.json``, in der alle aktuellen 
 *[server/versions.json](https://github.com/fwehn/pp-voiceassistant/blob/main/src/server/versions.json)*
 
 Die Daten aus dieser ``.json``-Datei werden bei Abruf dann in die jeweiligen Datei-Pfade aufgelöst.  
-So werden zum Beispiel, beim Abruf der Version "[2.0](https://github.com/fwehn/pp-voiceassistant/blob/main/src/server/skills/HelloWorld/2.0)" des ``HelloWorld``-Skills, die Dateien im verzeichnis ``skills/HelloWorld/3.0`` bereitgestellt.  
-Erhält der Server nun eine Anfrage mit der Version ``latest``, so verwendet er den ersten Eintrag in der jeweiligen Liste, im Beispiel von ``HelloWorld`` wäre das Version "[3.0](https://github.com/fwehn/pp-voiceassistant/blob/main/src/server/skills/HelloWorld/3.0)".
+So werden zum Beispiel, beim Abruf der Version "[2.0](https://github.com/fwehn/pp-voiceassistant/blob/main/src/skills/HelloWorld/2.0)" des ``HelloWorld``-Skills, die Dateien im verzeichnis ``skills/HelloWorld/3.0`` bereitgestellt.  
+Erhält der Server nun eine Anfrage mit der Version ``latest``, so verwendet er den ersten Eintrag in der jeweiligen Liste, im Beispiel von ``HelloWorld`` wäre das Version "[3.0](https://github.com/fwehn/pp-voiceassistant/blob/main/src/skills/HelloWorld/3.0)".
 
 ## Upload
 

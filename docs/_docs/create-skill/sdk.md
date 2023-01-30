@@ -132,7 +132,7 @@ function helloWorld(hello, world){
     customSdk.say(`${hello} ${world}`);
 }
 ````
-*[HelloWorld](https://github.com/fwehn/pp-voiceassistant/blob/main/src/server/skills/HelloWorld/1.0/src/index.js)*
+*[HelloWorld](https://github.com/fwehn/pp-voiceassistant/blob/main/src/skills/HelloWorld/1.0/src/index.js)*
 
 Bei diesem Beispiel werden die beiden Strings ``hello`` und ``world`` aneinander gehangen und ausgegeben.
 
@@ -140,7 +140,7 @@ Bei diesem Beispiel werden die beiden Strings ``hello`` und ``world`` aneinander
 
 Entwicklerinnen und Entwickler können [Antwortsätze](./locales.md#answers) in verschiedenen Sprachen definieren.  
 Damit diese jedoch mit einigen Werten erweitert werden können, muss ein solcher Satz generiert werden.  
-Dazu gibt man einen Satz wie zum Beispiel ``Es ist # Uhr #`` (aus [GetTime](https://github.com/fwehn/pp-voiceassistant/blob/main/src/server/skills/GetTime/1.0/src/index.js)) an.  
+Dazu gibt man einen Satz wie zum Beispiel ``Es ist # Uhr #`` (aus [GetTime](https://github.com/fwehn/pp-voiceassistant/blob/main/src/skills/GetTime/1.0/src/index.js)) an.  
 Die Funktion ``generateAnswer`` ersetzt dann jeden Separator (standardmäßig ``#``) mit den Werten, die als Array übergeben werden.  
 Mit der Variable ``answerIndex`` kann man deklarieren, welcher Antwortsatz ausgewählt werden soll.  
 
@@ -182,7 +182,7 @@ function getTime(){
     customSdk.say(answer);
 }
 ````
-*[GetTime](https://github.com/fwehn/pp-voiceassistant/blob/main/src/server/skills/GetTime/1.0/src/index.js)*
+*[GetTime](https://github.com/fwehn/pp-voiceassistant/blob/main/src/skills/GetTime/1.0/src/index.js)*
 
 Hier wird der Satz ``Es ist # Uhr #`` um die aktuelle Stunde und die aktuelle Minute erweitert, also z.B. ``Es ist 11 Uhr 34``.  
 Dieser Satz wird dann mit der ``say``-Funktion ausgegeben.
@@ -231,7 +231,7 @@ let dayName = customSdk.getRawToken("days");
 answer = customSdk.generateAnswer(0, [dayName, Math.floor(forecastDay["temp_min"]), Math.floor(forecastDay["temp_max"])]);
 customSdk.say(answer);
 ````
-*[GetWeather](https://github.com/fwehn/pp-voiceassistant/blob/main/src/server/skills/GetWeather/1.0/src/index.js)*
+*[GetWeather](https://github.com/fwehn/pp-voiceassistant/blob/main/src/skills/GetWeather/1.0/src/index.js)*
 
 
 
@@ -275,7 +275,7 @@ function getUrl(){
     });
 }
 ````
-*[GetWeather](https://github.com/fwehn/pp-voiceassistant/blob/main/src/server/skills/GetWeather/1.0/src/index.js)*
+*[GetWeather](https://github.com/fwehn/pp-voiceassistant/blob/main/src/skills/GetWeather/1.0/src/index.js)*
 
 In diesem Beispiel werden die Angaben, die über das [Webinterface](./../client/webinterface.md#details) gesetzt wurden, dazu genutzt, eine URL zu generieren, um auf die API von [OpenWeather](https://openweathermap.org/) zuzugreifen.  
 

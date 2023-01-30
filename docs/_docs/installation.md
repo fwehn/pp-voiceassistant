@@ -24,10 +24,9 @@ Da das Projekt darauf ausgelegt war, dass das Skillsystem auf einem [Raspberry P
 
 Für eine einfache und schnelle Installation habe ich eine vorkonfigurierte Image-Datei erstellt, die auf einem Raspberry Pi mit einem [ReSpeaker 4-Mic Array](https://wiki.seeedstudio.com/ReSpeaker_4_Mic_Array_for_Raspberry_Pi/) von [Seeed Studio](https://wiki.seeedstudio.com/) installiert werden kann.  
 Diese Datei kann [hier]() heruntergeladen werden.  
-Um sie zu installieren braucht man jedoch ein Programm, das Disk-Images auf eine SD-Karte schreiben kann.  
+Um sie zu installieren braucht man jedoch ein Programm, welches Disk-Images auf eine SD-Karte schreiben kann.  
 Ich nutze dazu den [Win32 Disk Imager](https://win32diskimager.org/).  
-Nachdem die installation abgeschlossen ist.  
-Muss man die SD-Karte über den Windows Explorer aufrufen und eine Datei mit dem Namen ``wpa_supplicant.config`` erstellen, welche folgende Informationen enthält:  
+Nachdem die installation abgeschlossen ist, muss man die SD-Karte über den Windows Explorer aufrufen und eine Datei mit dem Namen ``wpa_supplicant.config`` erstellen, welche folgende Informationen enthält:  
 
 ````
 country=DE
@@ -62,10 +61,10 @@ Voraussetzung für die unten genannten Schritte sind eine [Rhasspy-Instanz](http
 Zudem müssen die Laufzeit-Umgebung [NodeJS](https://nodejs.org/en/download/) (in meinem Fall version "v17.0.0") und [Git](https://git-scm.com/) installiert sein.  
   
 Sind all diese Dinge installiert und Rhasspy und der MQTT-Broker sind unter den Ports ``12101`` bzw ``1883`` erreichbar, kann die eigentliche Installation des Skillmanagers beginnen.  
-Dazu Verbindet man sich mit dem Raspberry Pi via [ssh](https://de.wikipedia.org/wiki/Secure_Shell) (zum Beispiel mit [Windows Powershell](https://de.wikipedia.org/wiki/PowerShell)).  
+Dazu Verbindet man sich mit dem Raspberry Pi via [ssh](https://de.wikipedia.org/wiki/Secure_Shell) (zum Beispiel via [Windows Powershell](https://de.wikipedia.org/wiki/PowerShell)).  
   
 Der Ausgangspunkt sollte ``/home/pi`` sein.  
-Von hieraus läd man sich das [GitHub-Repository](https://github.com/fwehn/pp-voiceassistant) und installiert die benötigten [npm-Packages](https://www.npmjs.com/).  
+Von hieraus läd man sich das [GitHub-Repository](https://github.com/fwehn/pp-voiceassistant) herunter und installiert die benötigten [npm-Packages](https://www.npmjs.com/).  
 
 ````shell
 git clone https://github.com/fwehn/pp-voiceassistant.git

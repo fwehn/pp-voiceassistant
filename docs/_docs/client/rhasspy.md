@@ -45,26 +45,15 @@ Um die Änderungen wirksam zu machen, muss man nach den obigen Anfragen eine wei
 Dadurch wird Rhasspy's eigene Trainingsroutine gestartet.  
 Rhasspy kümmert sich im Hintergrund darum, dass die Spracherkennung die neu hinzugefügten Wörter erkennt und die neuen Sätze von der Intent-Erkennung erfasst und die Intentionen bestimmt werden können.  
 
+## Rhasspy Einstellungen
 
+Für mein vorkonfiguriertes Disk-Image habe ich folgende Einstellungen getroffen:
 
-## Base/Satellite
-Für die Arbeit an diesem Projekt brauchte ich eine Rhasspy Instanz, mit der ich meinen Code testen konnte.  
-Da ich mir vor ein paar Monaten einen [Docker-Swarm](https://docs.docker.com/engine/swarm/) Cluster aus mehreren [Raspberry Pi 4](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/) gebaut habe, habe ich mich dazu entschlossen, Rhasspy in einem [Base/Satellite-Setup](https://rhasspy.readthedocs.io/en/latest/tutorials/#server-with-satellites) zu betreiben.  
-Dabei hat man einen Zentralen Server (in meinem Fall das Cluster) und einen oder mehrere Satelliten (in meinem Fall ein [Raspberry Pi Zero W](https://www.raspberrypi.com/products/raspberry-pi-zero-w/) mit [ReSpeaker 2-Mics Pi HAT](https://wiki.seeedstudio.com/ReSpeaker_2_Mics_Pi_HAT/)).  
+![rhasspy-settings](./../../assets/img/rhasspy-settings.png)
 
-![Raspberry Pi Cluster](./../../assets/img/Hardware/Cluster/clusterandswitch.jpg)
-*Bild meines Raspberry Pi Clusters mit Zigbee-Stick CC2531*
+Dabei handelt es sich fast ausschließlich um die von Rhasspy vorgeschlagenen Einstellungen.  
+Lediglich als Audioeingabe habe ich ``arecord`` statt ``pyaudio`` verwendet, da es mit meinem Mikrofon besser funktioniert hat.  
 
-![Raspberry Pi Zero W](./../../assets/img/Hardware/Satellite/satellite.jpg)
-*Bild meines Satellites (Raspberry Pi Zero W)*
-
-Auf beiden läuft ein Docker Container basierend auf dem [Rhasspy Image](https://rhasspy.readthedocs.io/en/latest/installation/#docker).  
-Darüber hinaus läuft ein [Mosquitto Container](https://hub.docker.com/_/eclipse-mosquitto) als MQTT-Broker auf dem Base-Server (Cluster).  
-Beide Rhasspy Instanzen verbinden sich mit dem MQTT-Broker, um miteinander zu kommunizieren. 
-
-Dabei kümmert sich der Base Container um folgende Punkte:  
-- Speech to Text ([Kaldi](https://kaldi-asr.org/))
-- Intent Recognition ([Fsticuffs](https://rhasspy.readthedocs.io/en/latest/intent-recognition/#fsticuffs))
-- Text to Speech ([NanoTTS](https://github.com/gmn/nanotts))
-
-Der Satellite Container übernimmt lediglich die Wake Word Detection([Porcupine](https://picovoice.ai/platform/porcupine/)) und die Audio Ein-/Ausgabe([ALSA](http://manpages.ubuntu.com/manpages/bionic/man1/aplay.1.html)).
+Die zwei wichtigsten Einstellungen sind jedoch ``MQTT`` und ``Intent Handling``.  
+Der Punkt ``MQTT`` muss auf ``External`` stehen und auf einen separaten MQTT-Broker verweisen, da auch mein Skillmanager auf diesen zugreifen muss.  
+Und ``Intent Handling`` sollte ``Disabled`` sein, da mein Skillmanager sich darum kümmert und so die Intents von Rhasspy übergeben bekommt.

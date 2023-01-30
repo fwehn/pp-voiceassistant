@@ -13,6 +13,7 @@ Um neue Skills zu installieren, gibt es zwei verschiedene Wege:
 
 Für die Online-Variante benötigt man eine Instanz des [Skillservers](./../server/skillserver.md).  
 Unter welcher Adresse dieser erreichbar ist, kann man als Umgebungsvariable in der [Client-Anwendung](./../installation.md#client) speichern.  
+Standardmäßig verweist diese Variable auf meine [öffentliche Instanz](https://skillserver.fwehn.de).  
 
 ### Online
 
