@@ -10,8 +10,6 @@ Eine ausführliche Dokumentation meiner Ergebnisse findet sich [hier](https://fw
 
 ## Installation
 
-Bei diesem Projekt handelt es sich um ein NodeJS-Projekt.  
-Um es zu installieren, muss zunächst das Repository heruntergeladen werden und im Verzeichnis ``src/sdk`` der Befehl ``npm install`` ausgeführt werden.  
-Danach müssen im Verzeichnis ``src/client`` die Befehle ``npm install`` und ``npm run start`` ausgeführt werden.  
+Der einfachste Weg mein Skillsystem zu installieren und auszuprobieren, ist mittels des vorkonfigurierten [Disk-Images]().
 
-Eine Beschreibung der zu setzenden Umgebungsvariablen findet sich in meiner Dokumentation unter dem Punkt [Installation](https://fwehn.github.io/pp-voiceassistant/docs/installation/).
+Eine ausführliche Installationsanleitung sowie eine Beschreibung der zu setzenden Umgebungsvariablen findet sich in meiner Dokumentation unter dem Punkt [Installation](https://fwehn.github.io/pp-voiceassistant/docs/installation/).
