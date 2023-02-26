@@ -23,7 +23,7 @@ Da das Projekt darauf ausgelegt war, dass das Skillsystem auf einem [Raspberry P
 [//]: # (TODO download link einfügen)
 
 Für eine einfache und schnelle Installation habe ich eine vorkonfigurierte Image-Datei erstellt, die auf einem Raspberry Pi mit einem [ReSpeaker 4-Mic Array](https://wiki.seeedstudio.com/ReSpeaker_4_Mic_Array_for_Raspberry_Pi/) von [Seeed Studio](https://wiki.seeedstudio.com/) installiert werden kann.  
-Diese Datei kann [hier]() heruntergeladen werden.  
+Diese Datei kann [hier](https://th-koeln.sciebo.de/s/5hLnte9kk9wDlRS) heruntergeladen werden.  
 Um sie zu installieren braucht man jedoch ein Programm, welches Disk-Images auf eine SD-Karte schreiben kann.  
 Ich nutze dazu den [Win32 Disk Imager](https://win32diskimager.org/).  
 Nachdem die installation abgeschlossen ist, muss man die SD-Karte über den Windows Explorer aufrufen und eine Datei mit dem Namen ``wpa_supplicant.config`` erstellen, welche folgende Informationen enthält:  
